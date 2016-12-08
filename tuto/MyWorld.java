@@ -39,7 +39,15 @@ public class MyWorld extends World
 
         Robot robot = new Robot();
         addObject(robot,79,525);
+        
+        Road road = new Road();
+        addObject(road,129,392);
+ 
     }
+    
+    public void addRoad(){
+    }
+     
     
     public void addGrass(){
         Grass grass = new Grass();
