@@ -15,6 +15,7 @@ public class Robot extends SmoothMover
     public void act() 
     {
         checkKeys();
+       
     }  
     
     public void checkKeys(){
@@ -25,11 +26,23 @@ public class Robot extends SmoothMover
         if (Greenfoot.isKeyDown("right")){
             setLocation(getX()+3, getY());
         }
-        if (Greenfoot.isKeyDown("up")){
-            setLocation(getX(), getY()-3);
+        if (!canSee(Grass.class)){
+            if (Greenfoot.isKeyDown("up")){
+                setLocation(getX(), getY()-3);
+            }
         }
         if (Greenfoot.isKeyDown("down")){
             setLocation(getX(), getY()+3);
         }
+    }
+    
+        /**
+     * Return true if we can see an object of class 'clss' right where we are. 
+     * False if there is no such object here.
+     */
+    public boolean canSee(Class clss)
+    {
+        Actor actor = getOneObjectAtOffset(0, 0, clss);
+        return actor != null;        
     }
 }

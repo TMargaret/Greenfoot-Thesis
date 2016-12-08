@@ -26,30 +26,22 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-        Place2 place2 = new Place2();
-        addObject(place2,768,324);
-        place2.setLocation(675,362);
-        removeObject(place2);
-        Place2 place22 = new Place2();
-        addObject(place22,856,274);
-        place22.setLocation(851,275);
+        addGrass();
+
         Place place = new Place();
-        addObject(place,131,276);
-        Place place3 = new Place();
-        addObject(place3,555,243);
-        place22.setLocation(525,417);
-        place3.setLocation(878,264);
-        place22.setLocation(503,408);
-        place3.setLocation(875,276);
-        place22.setLocation(506,389);
+        addObject(place,129,287);
+
+        Place place2 = new Place();
+        addObject(place2,883,280);
+
+        Place2 place22 = new Place2();
+        addObject(place22,506,303);
+
         Robot robot = new Robot();
-        addObject(robot,89,536);
-        place22.setLocation(490,277);
-        Place2 place23 = new Place2();
-        addObject(place23,457,486);
-        removeObject(place22);
-        place23.setLocation(490,300);
-        place23.setLocation(488,343);
+        addObject(robot,79,525);
+    }
+    
+    public void addGrass(){
         Grass grass = new Grass();
         addObject(grass,665,260);
         Grass grass2 = new Grass();
@@ -89,8 +81,7 @@ public class MyWorld extends World
         Grass grass19 = new Grass();
         addObject(grass19,243,296);
         Grass grass20 = new Grass();
-        addObject(grass20,247,258);
-        grass20.setLocation(22,274);
+        addObject(grass20,22,274);
         grass19.setLocation(4,269);
         grass20.setLocation(9,319);
         grass19.setLocation(28,321);
@@ -101,7 +92,6 @@ public class MyWorld extends World
         grass15.setLocation(300,319);
         grass14.setLocation(324,321);
         grass17.setLocation(346,320);
-        place23.setLocation(488,344);
         grass13.setLocation(372,320);
         grass12.setLocation(769,325);
         grass6.setLocation(736,325);
@@ -129,8 +119,6 @@ public class MyWorld extends World
         grass2.setLocation(988,295);
         grass3.setLocation(989,305);
         grass5.setLocation(990,321);
-        place23.setLocation(489,337);
-        removeObject(place23);
         grass4.setLocation(616,328);
         grass.setLocation(620,319);
         grass7.setLocation(385,321);
@@ -155,32 +143,34 @@ public class MyWorld extends World
         Grass grass24 = new Grass();
         addObject(grass24,782,336);
         grass24.setLocation(777,326);
+        
         Grass grass25 = new Grass();
         addObject(grass25,22,336);
+        
         Grass grass26 = new Grass();
         addObject(grass26,241,335);
+        
         Grass grass27 = new Grass();
-        addObject(grass27,280,335);
+        addObject(grass27,276,334);
+        
         Grass grass28 = new Grass();
         addObject(grass28,309,333);
+        
         Grass grass29 = new Grass();
         addObject(grass29,345,333);
+        
         Grass grass30 = new Grass();
-        addObject(grass30,387,344);
-        grass30.setLocation(378,340);
-        grass27.setLocation(276,334);
-        grass30.setLocation(381,336);
+        addObject(grass30,381,336);
         grass5.setLocation(979,322);
+        
         Grass grass31 = new Grass();
         addObject(grass31,998,330);
+        
         Grass grass32 = new Grass();
-        addObject(grass32,598,337);
+        addObject(grass32,674,333);
+        
         Grass grass33 = new Grass();
-        addObject(grass33,415,343);
-        grass33.setLocation(412,336);
-        grass32.setLocation(674,333);
-        Place2 place24 = new Place2();
-        addObject(place24,504,316);
-        place24.setLocation(500,316);
+        addObject(grass33,412,336);
+        
     }
 }
