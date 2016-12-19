@@ -18,24 +18,31 @@ public class Robot extends SmoothMover
        
     }  
     
+    /**
+     * Moving around with arrow keys
+     */
     public void checkKeys(){
+        //move left
         if (Greenfoot.isKeyDown("left")){
             setLocation(getX()-3, getY());
         }
+        //move right
         if (Greenfoot.isKeyDown("right")){
             setLocation(getX()+3, getY());
         }
-        if (!canSee(Grass.class) & !canSee(Place.class) & !canSee(Place2.class)){
+        //move up but until a specific border
+        if (!canSee(Grass.class) & !canSee(Place.class) & !canSee(mainHouse.class)){
             if (Greenfoot.isKeyDown("up")){
                 setLocation(getX(), getY()-3);
             }
         }
+        //move down
         if (Greenfoot.isKeyDown("down")){
             setLocation(getX(), getY()+3);
         }
     }
     
-        /**
+    /**
      * Return true if we can see an object of class 'clss' right where we are. 
      * False if there is no such object here.
      */
@@ -44,4 +51,15 @@ public class Robot extends SmoothMover
         Actor actor = getOneObjectAtOffset(0, 0, clss);
         return actor != null;        
     }
+    
+    public void enterRoom()
+    {
+        if (canSee(mainHouse.class))
+        {
+            //Greenfoot.setWorld();
+        }
+    }
+    
+    
+    
 }

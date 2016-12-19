@@ -36,8 +36,8 @@ public class MyWorld extends World
         Place place2 = new Place();
         addObject(place2,883,280);
 
-        Place2 place22 = new Place2();
-        addObject(place22,506,303);
+        mainHouse my_mainHouse = new mainHouse();
+        addObject(my_mainHouse,506,303);
 
         Robot robot = new Robot();
         addObject(robot,79,525);
