@@ -15,6 +15,7 @@ public class Robot extends SmoothMover
     public void act() 
     {
         checkKeys();
+        enterRoom();
        
     }  
     
@@ -31,7 +32,7 @@ public class Robot extends SmoothMover
             setLocation(getX()+3, getY());
         }
         //move up but until a specific border
-        if (!canSee(Grass.class) & !canSee(Place.class) & !canSee(mainHouse.class)){
+        if (!canSee(Grass.class) & !canSee(Hut.class) & !canSee(mainHouse.class)){
             if (Greenfoot.isKeyDown("up")){
                 setLocation(getX(), getY()-3);
             }
@@ -52,13 +53,18 @@ public class Robot extends SmoothMover
         return actor != null;        
     }
     
+    /**
+     * This collision detects if robot can enter the mainHouse room 
+     * 
+     */
     public void enterRoom()
     {
         if (canSee(mainHouse.class))
         {
-            //Greenfoot.setWorld();
+            Greenfoot.setWorld(new mainHouseRoom());
         }
     }
+
     
     
     
