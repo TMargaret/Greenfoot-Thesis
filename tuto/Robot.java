@@ -25,21 +25,21 @@ public class Robot extends SmoothMover
     public void checkKeys(){
         //move left
         if (Greenfoot.isKeyDown("left")){
-            setLocation(getX()-3, getY());
+            setLocation(getX()-4, getY());
         }
         //move right
         if (Greenfoot.isKeyDown("right")){
-            setLocation(getX()+3, getY());
+            setLocation(getX()+4, getY());
         }
         //move up but until a specific border
         if (!canSee(Grass.class) & !canSee(Hut.class) & !canSee(mainHouse.class)){
             if (Greenfoot.isKeyDown("up")){
-                setLocation(getX(), getY()-3);
+                setLocation(getX(), getY()-4);
             }
         }
         //move down
         if (Greenfoot.isKeyDown("down")){
-            setLocation(getX(), getY()+3);
+            setLocation(getX(), getY()+4);
         }
     }
     

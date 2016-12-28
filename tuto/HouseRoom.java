@@ -30,9 +30,20 @@ public class HouseRoom extends World
     {
         // put your code here
         Robot robot = new Robot();
-        addObject(robot,50, 50);
-        
-        
+        addObject(robot,100, 150);
+        addWall();
+    }
+    
+    public void addWall(){
+        OuterWall outWall = new OuterWall();
+        for (int i = 0; i < getWidth(); i+=outWall.getImage().getWidth()){
+            addObject(new OuterWall(), i, outWall.getImage().getHeight()/2);
+            addObject(new OuterWall(), i, getHeight() - outWall.getImage().getHeight()/2);
+        }
+        for (int i = 0; i < getHeight(); i+=outWall.getImage().getHeight()){
+            addObject(new OuterWall(), 0, i - outWall.getImage().getHeight()/2 );
+            addObject(new OuterWall(), getWidth()+ outWall.getImage().getWidth(), i - outWall.getImage().getHeight()/2 );
+        }
     }
     
     
