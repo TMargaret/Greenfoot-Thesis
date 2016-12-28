@@ -14,6 +14,7 @@ public class Robot extends SmoothMover
      */
     public void act() 
     {
+        onObstacles();
         checkKeys();
         enterRoom();
        
@@ -41,6 +42,10 @@ public class Robot extends SmoothMover
         if (Greenfoot.isKeyDown("down")){
             setLocation(getX(), getY()+4);
         }
+    }
+    
+    private void onObstacles(){
+        if (getOneIntersectingObject(WallFrame.class) != null) setLocation(getX()-1, getY()-1);
     }
     
     /**

@@ -42,8 +42,8 @@ public class PIP extends Actor
         sensor.setImage(new GreenfootImage(minorWidth+minorCellSize*2, minorHeight*minorCellSize*2));
         // create the base image of the PIP object
         GreenfootImage image = new GreenfootImage(minorWidth+11, minorHeight+11);
-        // paint the background of the base image white
-        image.setColor(Color.white);
+        // paint the background of the base image black
+        image.setColor(Color.black);
         image.fill();
         // create the picture frame
         image.setColor(Color.black);
