@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class mainHouseRoom extends World
 {
+     
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -30,6 +31,10 @@ public class mainHouseRoom extends World
         // put your code here
         Robot robot = new Robot();
         addObject(robot,50, 50);
+        
+        
     }
+    
+    
 
 }
