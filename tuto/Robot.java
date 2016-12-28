@@ -61,7 +61,7 @@ public class Robot extends SmoothMover
     {
         if (canSee(mainHouse.class))
         {
-            Greenfoot.setWorld(new mainHouseRoom());
+            Greenfoot.setWorld(new HouseRoom());
         }
     }
 

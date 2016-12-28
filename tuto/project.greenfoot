@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed Dec 28 14:02:13 EET 2016
+#Wed Dec 28 14:17:46 EET 2016
 editor.fx.0.height=700
 target2.width=90
 target8.name=Grass
@@ -16,6 +16,7 @@ target5.type=AbstractTarget
 target6.y=130
 target6.x=100
 target1.showInterface=false
+class.Major.superclass=greenfoot.World
 class.Tree.superclass=greenfoot.Actor
 target4.y=130
 target4.x=190
@@ -28,6 +29,7 @@ target2.x=10
 target10.type=ClassTarget
 target8.height=50
 class.Windmill.image=windmill_ace_by_schwarzenacht-d8h71lq.png
+class.PIP.superclass=greenfoot.Actor
 target10.typeParameters=
 dependency4.from=Robot
 dependency5.to=mainHouse
@@ -81,7 +83,6 @@ target6.name=Tree
 target9.height=50
 class.Road.superclass=greenfoot.Actor
 editor.fx.0.width=700
-class.test.superclass=mainHouseRoom
 target10.y=10
 target10.x=70
 dependency2.to=Robot

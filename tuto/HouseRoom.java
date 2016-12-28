@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class mainHouseRoom extends World
+public class HouseRoom extends World
 {
      
 
@@ -14,9 +14,9 @@ public class mainHouseRoom extends World
      * Constructor for objects of class mainHouseRoom.
      * 
      */
-    public mainHouseRoom()
+    public HouseRoom()
     {
-        super(1000, 600, 1);
+        super(900, 500, 1);
         prepare();
     }
     
