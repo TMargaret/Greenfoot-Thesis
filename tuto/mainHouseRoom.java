@@ -30,6 +30,8 @@ public class mainHouseRoom extends World
         // put your code here
         Robot robot = new Robot();
         addObject(robot,50, 50);
+        Elder elder = new Elder();
+        addObject(elder,949,537);
     }
 
 }
