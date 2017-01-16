@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=TextPanel
+comment1.params=status
+comment1.target=TextPanel(java.lang.String)
+comment2.params=
+comment2.target=void\ makeText()
+comment3.params=title\ prefix\ iScore
+comment3.target=void\ makeImage(java.lang.String,\ java.lang.String,\ int)
+comment4.params=title
+comment4.target=void\ makeImage(java.lang.String)
+comment5.params=
+comment5.target=void\ act()
+numComments=6

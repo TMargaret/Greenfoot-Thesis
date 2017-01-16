@@ -14,6 +14,10 @@ public class Elder extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        createDialog();
     }    
+    
+    public void createDialog(){
+        Label text = new Label("Hello", 5);
+    }
 }
