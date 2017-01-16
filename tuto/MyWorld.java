@@ -40,8 +40,8 @@ public class MyWorld extends World
         Robot robot = new Robot();
         addObject(robot,79,525);
         
-        TextPanel tp = new TextPanel("StartScreen");
-        addObject(tp, getWidth()/2,getHeight()/2);
+       // TextPanel tp = new TextPanel("StartScreen");
+       // addObject(tp, getWidth()/2,getHeight()/2);
     }
     
     /**

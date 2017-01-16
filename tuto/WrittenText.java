@@ -15,5 +15,8 @@ public class WrittenText extends Actor
     public WrittenText(){
     }   
     
-    public String 
+    public String start(){
+        
+        return "a";
+    }
 }

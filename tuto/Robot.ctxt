@@ -13,4 +13,6 @@ comment3.text=\r\n\ Return\ true\ if\ we\ can\ see\ an\ object\ of\ class\ 'clss
 comment4.params=
 comment4.target=void\ enterRoom()
 comment4.text=\r\n\ This\ collision\ detects\ if\ robot\ can\ enter\ the\ mainHouse\ room\ \r\n\ \r\n
-numComments=5
+comment5.params=
+comment5.target=void\ canSeeRobot()
+numComments=6

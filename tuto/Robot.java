@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Robot extends SmoothMover
 {
+    private MyWorld myworld;
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -64,6 +65,15 @@ public class Robot extends SmoothMover
             Greenfoot.setWorld(new mainHouseRoom());
         }
     }
+    
+    public void canSeeRobot(){
+        if (canSee(Robot.class))
+        {
+            TextPanel tp = new TextPanel("BrokenHutMessage");
+            myworld.addObject(tp, 40, 40);
+        }
+    }
+    
 
     
     
