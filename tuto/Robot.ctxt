@@ -14,5 +14,5 @@ comment4.params=
 comment4.target=void\ enterRoom()
 comment4.text=\r\n\ This\ collision\ detects\ if\ robot\ can\ enter\ the\ mainHouse\ room\ \r\n\ \r\n
 comment5.params=
-comment5.target=void\ canSeeRobot()
+comment5.target=void\ canSeeHut()
 numComments=6

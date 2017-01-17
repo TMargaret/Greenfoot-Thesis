@@ -9,6 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Robot extends SmoothMover
 {
     private MyWorld myworld;
+    int counter = 10;
+    boolean isActive = false;
+    private TextPanel tp;
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -17,6 +20,7 @@ public class Robot extends SmoothMover
     {
         checkKeys();
         enterRoom();
+        canSeeHut();
        
     }  
     
@@ -66,13 +70,25 @@ public class Robot extends SmoothMover
         }
     }
     
-    public void canSeeRobot(){
-        if (canSee(Robot.class))
+    public void canSeeHut(){
+        
+        if (canSee(Hut.class))
         {
-            TextPanel tp = new TextPanel("BrokenHutMessage");
-            myworld.addObject(tp, 40, 40);
+            counter--;
+            if (counter<0 && !isActive){
+                
+                TextPanel tp = new TextPanel("BrokenHutMessage");
+                getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                isActive = true;
+            }
+            if (Greenfoot.isKeyDown("enter")){
+                counter = 10;
+                getWorld().removeObject(tp);
+                isActive = false;
+            }
         }
     }
+    
     
 
     

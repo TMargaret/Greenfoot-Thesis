@@ -39,9 +39,6 @@ public class MyWorld extends World
 
         Robot robot = new Robot();
         addObject(robot,79,525);
-        
-       // TextPanel tp = new TextPanel("StartScreen");
-       // addObject(tp, getWidth()/2,getHeight()/2);
     }
     
     /**
@@ -57,8 +54,7 @@ public class MyWorld extends World
         addObject(oldHut,129,287);
 
         Hut oldHut2 = new Hut();
-        addObject(oldHut2,883,287);
-        
+        addObject(oldHut2,883,287);  
     }
 
     
@@ -105,4 +101,5 @@ public class MyWorld extends World
             addObject(grass2[j],j*grass[j].getImage().getWidth(),getHeight()/2 + grass[j].getImage().getHeight()/2); 
         }
     }
+    
 }
