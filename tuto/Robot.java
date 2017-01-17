@@ -19,7 +19,7 @@ public class Robot extends SmoothMover
     public void act() 
     {
         checkKeys();
-        enterRoom(); 
+         
     } 
     
     /**
@@ -56,16 +56,6 @@ public class Robot extends SmoothMover
         return actor != null;        
     }
     
-    /**
-     * This collision detects if robot can enter the mainHouse room 
-     * 
-     */
-    public void enterRoom()
-    {
-        if (canSee(mainHouse.class))
-        {
-            Greenfoot.setWorld(new mainHouseRoom());
-        }
-    }
+
   
 }

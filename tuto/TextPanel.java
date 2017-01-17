@@ -5,6 +5,7 @@ import java.awt.Font;
 //κλάση του τελικού πίνακα ScoreBoard ο οποίος χρησιμοποιείται είτε σε περίπτωση νίκης, είτε ήττας
 //author M Kölling
 //modifications Trifou Margaret
+//BrokenHutMessage
 
 public class TextPanel extends Actor
 {
@@ -13,6 +14,7 @@ public class TextPanel extends Actor
     public static final int HEIGHT = 330;
    // public static final int TOTAL_ANSWERS = 6;
     private String status = null;
+    private WrittenText text;
     //private int iScore, lives, wrong_answers = 0;
 
     private GreenfootImage image;
@@ -20,40 +22,27 @@ public class TextPanel extends Actor
     public TextPanel(String status)
     {
         this.status = status;
+        text = new WrittenText();
         //this.iScore = iScore;
        //wrong_answers = TOTAL_ANSWERS - iScore;
-        makeImage(status);
+        
+    }
+    
+    public void act()
+    {
+        makeText();
     }
     
     private void makeText(){
         
-    }
-
-
-    private void makeImage(String title, String prefix, int iScore)
-    //δημιουργείται η εικόνα του ScoreBoard
-    {
-        image = new GreenfootImage(WIDTH, HEIGHT);
-
-        image.setColor(new Color(0,255,200, 128));
-        image.fillRect(0, 0, WIDTH, HEIGHT);
-        image.setColor(new Color(0, 130, 0, 128));
-        image.fillRect(5, 5, WIDTH-10, HEIGHT-10);
-        Font font = image.getFont();
-        font = font.deriveFont(FONT_SIZE);
-        image.setFont(font);
-        image.setColor(Color.YELLOW);
-        image.drawString(title, 30, 50);
-        image.drawString(prefix + iScore, 60, 150);
-        //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
-       // if ((status == "fail") || (status == "end_quiz")) image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);
-       // if (status == "fail2") image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);
-       // if (status == "win1") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
-       // if (status == "win2") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
-       // if ((status == "end_quiz") || (status == "end_quiz_win")) image.drawString("Λάθος απαντήσεις: " + wrong_answers, 60, 180);
-       // if ((status == "end_quiz") || (status == "end_quiz_win")) image.drawString("Πάτα το MENOΥ για έξοδο", 60, 300);
-        setImage(image);
-        
+        if (status == "BrokenHutMessage") {
+            String mytext = text.brokenHut();
+            makeImage(mytext);
+        }
+        if (status == "enteringRoom") {
+            String mytext = text.enteringRoom();
+            makeImage(mytext);
+        }
     }
     
     private void makeImage(String title)
@@ -81,9 +70,32 @@ public class TextPanel extends Actor
         setImage(image);
  
     }
-
-    public void act()
+    
+        private void makeImage(String title, String prefix, int iScore)
+    //δημιουργείται η εικόνα του ScoreBoard
     {
+        image = new GreenfootImage(WIDTH, HEIGHT);
+
+        image.setColor(new Color(0,255,200, 128));
+        image.fillRect(0, 0, WIDTH, HEIGHT);
+        image.setColor(new Color(0, 130, 0, 128));
+        image.fillRect(5, 5, WIDTH-10, HEIGHT-10);
+        Font font = image.getFont();
+        font = font.deriveFont(FONT_SIZE);
+        image.setFont(font);
+        image.setColor(Color.YELLOW);
+        image.drawString(title, 30, 50);
+        image.drawString(prefix + iScore, 60, 150);
+        //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
+       // if ((status == "fail") || (status == "end_quiz")) image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);
+       // if (status == "fail2") image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);
+       // if (status == "win1") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
+       // if (status == "win2") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
+       // if ((status == "end_quiz") || (status == "end_quiz_win")) image.drawString("Λάθος απαντήσεις: " + wrong_answers, 60, 180);
+       // if ((status == "end_quiz") || (status == "end_quiz_win")) image.drawString("Πάτα το MENOΥ για έξοδο", 60, 300);
+        setImage(image);
         
     }
+
+    
 }

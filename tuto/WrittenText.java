@@ -15,8 +15,12 @@ public class WrittenText extends Actor
     public WrittenText(){
     }   
     
-    public String start(){
+    public String brokenHut(){
         
-        return "a";
+        return "Η καλύβα αυτή φαίνεται ετοιμόρροπη.\nΚαλύτερα να τη φτιάξω πριν μπω.";
+    }
+    
+    public String enteringRoom(){
+        return "Είσοδος στο σπίτι...";
     }
 }
