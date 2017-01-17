@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Hut extends Actor
 {
+    int counter = 10;
+    boolean isActive = false;
+    private TextPanel textPanel;
 
     /**
      * Act - do whatever the Place wants to do. This method is called whenever
@@ -15,7 +18,31 @@ public class Hut extends Actor
      */
     public void act() 
     {
+        canSeeRobot();
     } 
     
-  
+    
+    public void canSeeRobot(){
+        
+        if (isTouching(Robot.class))
+        {
+            counter--;
+            if (counter<0 && !isActive){
+                
+                textPanel = new TextPanel("BrokenHutMessage");
+                getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                isActive = true;
+            }
+        }
+        if (Greenfoot.isKeyDown("enter")){
+                counter = 10;
+                getWorld().removeObject(textPanel);
+                
+            }
+        if (!isTouching(Robot.class))
+        {
+            isActive = false;
+            
+        }
+    }
 }

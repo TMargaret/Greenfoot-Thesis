@@ -19,10 +19,8 @@ public class Robot extends SmoothMover
     public void act() 
     {
         checkKeys();
-        enterRoom();
-        canSeeHut();
-       
-    }  
+        enterRoom(); 
+    } 
     
     /**
      * Moving around with arrow keys
@@ -69,29 +67,5 @@ public class Robot extends SmoothMover
             Greenfoot.setWorld(new mainHouseRoom());
         }
     }
-    
-    public void canSeeHut(){
-        
-        if (canSee(Hut.class))
-        {
-            counter--;
-            if (counter<0 && !isActive){
-                
-                TextPanel tp = new TextPanel("BrokenHutMessage");
-                getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                isActive = true;
-            }
-            if (Greenfoot.isKeyDown("enter")){
-                counter = 10;
-                getWorld().removeObject(tp);
-                isActive = false;
-            }
-        }
-    }
-    
-    
-
-    
-    
-    
+  
 }
