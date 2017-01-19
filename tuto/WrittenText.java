@@ -23,4 +23,8 @@ public class WrittenText extends Actor
     public String enteringRoom(){
         return "Είσοδος στο σπίτι...";
     }
+    
+    public String exitRoom(){
+        return "Έξοδος...";
+    }
 }

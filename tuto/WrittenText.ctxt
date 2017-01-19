@@ -8,4 +8,6 @@ comment2.params=
 comment2.target=java.lang.String\ brokenHut()
 comment3.params=
 comment3.target=java.lang.String\ enteringRoom()
-numComments=4
+comment4.params=
+comment4.target=java.lang.String\ exitRoom()
+numComments=5

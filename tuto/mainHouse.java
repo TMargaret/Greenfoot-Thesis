@@ -25,27 +25,17 @@ public class mainHouse extends Actor
      * shows a message before entering the house
      */
      public void enterInRoom(){
-        if (canSee(Robot.class)){
+         if (getOneIntersectingObject(Robot.class) != null){
             counter--;
             if (!isActive){
                 textPanel = new TextPanel("enteringRoom");
                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                 isActive = true;
+            }
         }
             if (counter < 0){
                 getWorld().removeObject(textPanel);
                 Greenfoot.setWorld(new mainHouseRoom());
             }      
-        }
-    }
-    
-        /**
-     * Return true if we can see an object of class 'clss' right where we are. 
-     * False if there is no such object here.
-     */
-    public boolean canSee(Class clss)
-    {
-        Actor actor = getOneObjectAtOffset(20,100 , clss);
-        return actor != null;        
-    }
+        }  
 }

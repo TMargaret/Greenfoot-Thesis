@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class mainHouseRoom extends World
 {
+    Robot robot;
+    int counter = 100;
+    boolean isActive = false;
+    private TextPanel textPanel;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -17,6 +21,10 @@ public class mainHouseRoom extends World
     {
         super(1000, 600, 1);
         prepare();
+    }
+    
+    public void act(){
+        exitRoom();
     }
     
     /**
@@ -35,7 +43,7 @@ public class mainHouseRoom extends World
 
         addWall();
 
-        Robot robot = new Robot();
+        robot = new Robot();
         addObject(robot,80, 90);
 
         Elder elder = new Elder();
@@ -59,8 +67,6 @@ public class mainHouseRoom extends World
         {
             Wall wall_vert = new Wall();
             addObject(wall_vert, getWidth(),i);
-    
- 
         }
         
         //builds the vertical paths
@@ -71,5 +77,19 @@ public class mainHouseRoom extends World
         }
         
     }
-
+    
+    public void exitRoom(){
+        if (robot.isAtEdge()){
+            counter--;
+            if (!isActive){
+                textPanel = new TextPanel("exitRoom");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+                isActive = true;
+            }
+        }
+            if (counter < 0){
+                removeObject(textPanel);
+                Greenfoot.setWorld(new Level_1());
+            }      
+        }
 }

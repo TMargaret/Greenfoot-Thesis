@@ -43,6 +43,10 @@ public class TextPanel extends Actor
             String mytext = text.enteringRoom();
             makeImage(mytext);
         }
+        if (status == "exitRoom") {
+            String mytext = text.exitRoom();
+            makeImage(mytext);
+        }
     }
     
     private void makeImage(String title)
