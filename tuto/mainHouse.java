@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; 
+import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Place2 here.
@@ -24,9 +25,7 @@ public class mainHouse extends Actor
      * shows a message before entering the house
      */
      public void enterInRoom(){
-        
-        if (isTouching(Robot.class))
-        {
+        if (canSee(Robot.class)){
             counter--;
             if (!isActive){
                 textPanel = new TextPanel("enteringRoom");
@@ -38,5 +37,15 @@ public class mainHouse extends Actor
                 Greenfoot.setWorld(new mainHouseRoom());
             }      
         }
+    }
+    
+        /**
+     * Return true if we can see an object of class 'clss' right where we are. 
+     * False if there is no such object here.
+     */
+    public boolean canSee(Class clss)
+    {
+        Actor actor = getOneObjectAtOffset(20,100 , clss);
+        return actor != null;        
     }
 }

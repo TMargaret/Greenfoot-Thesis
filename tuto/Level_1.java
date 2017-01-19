@@ -7,7 +7,7 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MyWorld extends World
+public class Level_1 extends World
 {
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
@@ -17,7 +17,7 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MyWorld()
+    public Level_1()
     {    
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1); 
