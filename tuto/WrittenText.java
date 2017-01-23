@@ -27,4 +27,9 @@ public class WrittenText extends Actor
     public String exitRoom(){
         return "Έξοδος...";
     }
+    
+    public String roomEntranceText(){
+        return "Τι περίεργο σπίτι! \nΑ να κι ένας άνθρωπος!\nΑς του μιλήσω, μπορεί να με βοηθήσει.";
+    }
+    
 }

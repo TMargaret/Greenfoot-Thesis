@@ -9,9 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class mainHouseRoom extends World
 {
     Robot robot;
-    int counter = 100;
+    int counter = 100, counter2 = 50, flag = 0;
     boolean isActive = false;
-    private TextPanel textPanel;
+    private TextPanel textPanel, entranceText;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -24,6 +24,7 @@ public class mainHouseRoom extends World
     }
     
     public void act(){
+        enterRoomText();
         exitRoom();
     }
     
@@ -76,6 +77,19 @@ public class mainHouseRoom extends World
             addObject(wall_vert2, 0 ,i );
         }
         
+    }
+    
+    public void enterRoomText(){
+        counter2--;
+        if (counter2<0 && flag == 0){
+            entranceText = new TextPanel("RoomEntranceText");
+            addObject(entranceText, getWidth()/2, getHeight()/2);
+            flag = 1;
+        }
+        if (Greenfoot.isKeyDown("enter")){
+                counter2 = 50;
+                removeObject(entranceText);
+            }
     }
     
     public void exitRoom(){
