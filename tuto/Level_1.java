@@ -72,7 +72,7 @@ public class Level_1 extends World
             roadArray[j]=new Road();
             roadArray2[j]=new Road();
             addObject(roadArray[j],j*roadArray[j].getImage().getWidth(),getHeight()- roadArray[j].getImage().getHeight()/2);
-            addObject(roadArray2[j],j*roadArray[j].getImage().getWidth(),getHeight()- roadArray[j].getImage().getHeight());
+           // addObject(roadArray2[j],j*roadArray[j].getImage().getWidth(),getHeight()- roadArray[j].getImage().getHeight());
         }
         
         //builds the vertical paths

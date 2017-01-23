@@ -50,6 +50,15 @@ public class mainHouseRoom extends World
         Elder elder = new Elder();
         addObject(elder,900,500);
 
+        Clay clay = new Clay();
+        addObject(clay,910,85);
+        Clay clay2 = new Clay();
+        addObject(clay2,867,88);
+
+        Lumber lumber = new Lumber();
+        addObject(lumber,135,520);
+        Lumber lumber2 = new Lumber();
+        addObject(lumber2,100,528);
     }
     
     public void addWall(){
