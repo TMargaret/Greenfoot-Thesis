@@ -14,10 +14,13 @@ public class Elder extends Actor
      */
     public void act() 
     {
-        createDialog();
+        //createDialog();
     }    
     
     public void createDialog(){
-        Label text = new Label("Hello", 5);
+        if (getOneIntersectingObject(Robot.class) != null){
+            TextPanel helloText = new TextPanel("welcomeMsg");
+            getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2 );
+        }
     }
 }

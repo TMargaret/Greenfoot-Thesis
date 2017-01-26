@@ -32,4 +32,8 @@ public class WrittenText extends Actor
         return "Τι περίεργο σπίτι! \nΑ να κι ένας άνθρωπος!\nΑς του μιλήσω, μπορεί να με βοηθήσει.";
     }
     
+    public String welcomeMsg(){
+        return "Καλώς ήρθες!";
+    }
+    
 }

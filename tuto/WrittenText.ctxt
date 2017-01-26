@@ -12,4 +12,6 @@ comment4.params=
 comment4.target=java.lang.String\ exitRoom()
 comment5.params=
 comment5.target=java.lang.String\ roomEntranceText()
-numComments=6
+comment6.params=
+comment6.target=java.lang.String\ welcomeMsg()
+numComments=7

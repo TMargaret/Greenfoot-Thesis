@@ -20,6 +20,7 @@ public class Robot extends SmoothMover
     public void act() 
     {
        move(5);  
+       elderDialog();
     } 
     
     public void move(int moveAmt){
@@ -34,13 +35,20 @@ public class Robot extends SmoothMover
         for (int i = 0; i < moveAmt; i++)
         {
             setLocation(getX() + dx, getY());
-            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null)){ 
+            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null) || (getOneIntersectingObject(Elder.class) != null)){ 
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
-            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null)){
+            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null) || (getOneIntersectingObject(Elder.class) != null)){
                 setLocation(getX(), getY() - dy);
             }
+        }
+    }
+    
+    public void elderDialog(){
+        if (canSee(Elder.class)){
+            TextPanel helloText = new TextPanel("welcomeMsg");
+            getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2 );
         }
     }
     

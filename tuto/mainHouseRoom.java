@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class mainHouseRoom extends World
 {
     Robot robot;
-    int counter = 100, counter2 = 50, flag = 0;
+    int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
 

@@ -5,7 +5,7 @@ import java.awt.Font;
 //κλάση του τελικού πίνακα ScoreBoard ο οποίος χρησιμοποιείται είτε σε περίπτωση νίκης, είτε ήττας
 //author M Kölling
 //modifications Trifou Margaret
-//BrokenHutMessage, RoomEntranceText
+//BrokenHutMessage, RoomEntranceText, welcomeMsg
 
 public class TextPanel extends Actor
 {
@@ -49,6 +49,10 @@ public class TextPanel extends Actor
         }
         if (status == "RoomEntranceText") {
             String mytext = text.roomEntranceText();
+            makeImage(mytext);
+        }
+        if (status == "welcomeMsg") {
+            String mytext = text.welcomeMsg();
             makeImage(mytext);
         }
     }
