@@ -53,7 +53,7 @@ public class TextPanel extends Actor
         }
         if (status == "welcomeMsg") {
             String mytext = text.welcomeMsg();
-            makeImage(mytext);
+            makeImage(mytext, "elder");
         }
     }
     
@@ -61,7 +61,6 @@ public class TextPanel extends Actor
     //δημιουργείται η εικόνα του ScoreBoard
     {
         image = new GreenfootImage(WIDTH, HEIGHT);
-
         image.setColor(new Color(0,255,200, 128));
         image.fillRect(0, 0, image.getWidth(),image.getHeight());
         image.setColor(new Color(200, 130, 120, 128));
@@ -84,21 +83,20 @@ public class TextPanel extends Actor
  
     }
     
-        private void makeImage(String title, String prefix, int iScore)
+        private void makeImage(String title, String icon)
     //δημιουργείται η εικόνα του ScoreBoard
     {
         image = new GreenfootImage(WIDTH, HEIGHT);
-
-        image.setColor(new Color(0,255,200, 128));
-        image.fillRect(0, 0, WIDTH, HEIGHT);
-        image.setColor(new Color(0, 130, 0, 128));
-        image.fillRect(5, 5, WIDTH-10, HEIGHT-10);
-        Font font = image.getFont();
-        font = font.deriveFont(FONT_SIZE);
-        image.setFont(font);
-        image.setColor(Color.YELLOW);
+        image.setColor(new Color(130,24,24, 255));
+        image.fillRect(0, 0, image.getWidth(),image.getHeight());
+        image.setColor(new Color(200, 163, 92, 100));
+        image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
+        //Font font = image.getFont();
+        //font = font.deriveFont(FONT_SIZE);
+        image.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
+        image.setColor(Color.WHITE);
         image.drawString(title, 30, 50);
-        image.drawString(prefix + iScore, 60, 150);
+        image.drawString(icon, 60, 150);
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
        // if ((status == "fail") || (status == "end_quiz")) image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);
        // if (status == "fail2") image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);

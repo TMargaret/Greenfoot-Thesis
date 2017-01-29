@@ -14,7 +14,9 @@ public class HiddenSprite extends Actor {
         offsetY = dy;    
         body = new GreenfootImage(w, h);    
         if( visible ) {      
-            // Transparency values range from 0 (invisible) to 255 (opaque)      
+            // Transparency values range from 0 (invisible) to 255 (opaque) 
+            body.setColor(Color.RED);
+            body.fill();
             body.setTransparency(0);          
         }    
         setImage(body);  
