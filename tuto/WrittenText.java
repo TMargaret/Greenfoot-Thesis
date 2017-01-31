@@ -33,7 +33,8 @@ public class WrittenText extends Actor
     }
     
     public String welcomeMsg(){
-        return "Καλώς ήρθες!";
+        return "Καλώς ήρθες στον πλανήτη μου Objectus!\n\nΕίμαι ο πλανητάρχης Objectis και μπορώ \nνα σε "+
+        "βοηθήσω να φύγεις αρκεί να κάνεις \nκάτι για μένα.";
     }
     
 }
