@@ -10,9 +10,9 @@ import java.util.List;  // (World, Actor, GreenfootImage, Greenfoot and MouseInf
 public class Elder extends Actor
 {
     private HiddenSprite hs;
-    int counter = 10;
+    int counter = 10, count_enter = 0;
     boolean isActive = false;
-    private TextPanel helloText;
+    private TextPanel helloText, taskText, taskText2;
     /**
      * Act - do whatever the Elder wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -40,22 +40,30 @@ public class Elder extends Actor
                     if(a instanceof HiddenSprite)        
                     continue;        
                     if( a instanceof Robot) {  
-                         counter--;
-                         if (counter<0 && !isActive){
-                             helloText = new TextPanel("welcomeMsg");
-                             getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                             isActive = true;
-                            }
+                        counter--;
+                        if (counter<0 && !isActive){
+                            helloText = new TextPanel("welcomeMsg");
+                            getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            isActive = true;
                         }
-                        if (Greenfoot.isKeyDown("enter")){
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 0 && counter<0){
                             counter = 10;
                             getWorld().removeObject(helloText);
-                
+                            taskText = new TextPanel("taskText");
+                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            count_enter = 1;
                         }
-                        if (a instanceof Elder)
-                        {
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter <0){
+                            counter = 10;
+                            getWorld().removeObject(taskText);
+                            taskText2 = new TextPanel("taskText2");
+                            getWorld().addObject(taskText2, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            count_enter = 2;
+                        }
+                    } 
+                    if (a instanceof Elder)
+                    {
                             //isActive = false;
-            
                         }       
                     }
                 }
