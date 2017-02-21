@@ -63,6 +63,14 @@ public class TextPanel extends Actor
             String mytext = text.taskText2();
             makeImage(mytext, "elder");
         }
+        if (status == "taskText3") {
+            String mytext = text.taskText3();
+            makeImage(mytext, "elder");
+        }
+        if (status == "taskText4") {
+            String mytext = text.taskText4();
+            makeImage(mytext, "elder");
+        }
     }
     
     private void makeImage(String title)
@@ -107,6 +115,7 @@ public class TextPanel extends Actor
         //image.drawString(icon, 60, 150);
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
        if (status == "welcomeMsg" || status == "taskText" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 280);
+       if (status == "taskText3" || status == "taskText4") image.drawString("Πάτα ENTER", 30, 280);
        // if (status == "fail2") image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);
        // if (status == "win1") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
        // if (status == "win2") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
