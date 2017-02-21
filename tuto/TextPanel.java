@@ -71,6 +71,10 @@ public class TextPanel extends Actor
             String mytext = text.taskText4();
             makeImage(mytext, "elder");
         }
+        if (status == "taskText5") {
+            String mytext = text.taskText5();
+            makeImage(mytext, "elder");
+        }
     }
     
     private void makeImage(String title)
@@ -89,7 +93,7 @@ public class TextPanel extends Actor
         //image.drawString(prefix, 60, 150);
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
         if ((status == "BrokenHutMessage") || (status == "RoomEntranceText")
-        || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 280);
+        || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 290);
         // if (status == "start1_1" | status == "start2_1") image.drawString("Πάτα το ΚΑΤΩ ΒΕΛΟΣ", 60, 300);
         // if (status == "start1_2") image.drawString("Πάτα SPACE για να ξεκινήσεις", 60, 300);
         // if (status == "start2") image.drawString("Πάτα ENTER", 200, 280);
@@ -114,8 +118,8 @@ public class TextPanel extends Actor
         image.drawString(title, 30, 50);
         //image.drawString(icon, 60, 150);
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
-       if (status == "welcomeMsg" || status == "taskText" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 280);
-       if (status == "taskText3" || status == "taskText4") image.drawString("Πάτα ENTER", 30, 280);
+       if (status == "welcomeMsg" || status == "taskText" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);
+       if (status == "taskText3" || status == "taskText4" || status == "taskText5") image.drawString("Πάτα ENTER", 30, 290);
        // if (status == "fail2") image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);
        // if (status == "win1") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
        // if (status == "win2") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
