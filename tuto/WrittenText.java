@@ -29,7 +29,7 @@ public class WrittenText extends Actor
     }
     
     public String roomEntranceText(){
-        return "Τι περίεργο σπίτι! \nΑ να κι ένας άνθρωπος!\nΑς του μιλήσω, μπορεί να με βοηθήσει.";
+        return "Τι περίεργο σπίτι! \nΑ να κι ένα πλάσμα!\nΑς του μιλήσω, μπορεί να με βοηθήσει.";
     }
     
     public String welcomeMsg(){
