@@ -81,12 +81,8 @@ public class Elder extends Actor
                             getWorld().addObject(taskText5, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 5;
                         }
-                    } 
-                    if (a instanceof Elder)
-                    {
-                            //isActive = false;
-                        }       
-                    }
+                    }      
+                   }
                 }
             }
         }

@@ -42,6 +42,14 @@ public class mainHouseRoom extends World
         image.fill();
         setBackground(image);
 
+        Door door = new Door();
+        addObject(door,719,233);
+        door.setLocation(713,225);
+        
+        Door door2 = new Door();
+        addObject(door2,333,417);
+        door2.setLocation(321,406);
+
         addWall();
 
         robot = new Robot();
@@ -58,12 +66,70 @@ public class mainHouseRoom extends World
         Lumber lumber = new Lumber();
         addObject(lumber,135,520);
         Lumber lumber2 = new Lumber();
-        addObject(lumber2,100,528);
+        addObject(lumber2,100,528);    
     }
     
     public void addWall(){
         Wall[] wall = new Wall[25];
         Wall[] wall2 = new Wall[25];
+        
+        //Room with Clay
+        Wall wall79 = new Wall();
+        addObject(wall79,712,81);
+        wall79.setRotation(90);
+
+        Wall wall80 = new Wall();
+        addObject(wall80,958,294);
+
+        Wall wall81 = new Wall();
+        addObject(wall81,876,294);
+
+        Wall wall82 = new Wall();
+        addObject(wall82,795,294);
+
+        Wall wall83 = new Wall();
+        addObject(wall83,735,294);
+
+        Wall wall84 = new Wall();
+        addObject(wall84,712,137);
+        wall84.setRotation(90);
+        
+        //Room with Wood
+        Wall wall71 = new Wall();
+        addObject(wall71,82,340);
+
+        Wall wall72 = new Wall();
+        addObject(wall72,164,340);
+
+        Wall wall73 = new Wall();
+        addObject(wall73,246,340);
+
+        Wall wall74 = new Wall();
+        addObject(wall74,301,340);
+
+        Wall wall75 = new Wall();
+        addObject(wall75,321,547);
+        wall75.setRotation(90);
+        
+        Wall wall76 = new Wall();
+        addObject(wall76,321,490);
+        wall76.setRotation(90);
+        
+        //builds the right vertical paths
+        for(int i=0; i<=getHeight(); i+= 80)
+        {
+            Wall wall_vert = new Wall();
+            addObject(wall_vert, getWidth() - wall_vert.getImage().getWidth()/4,i);
+            wall_vert.setRotation(90);
+        }
+        
+        //builds the left vertical paths
+        for(int i=150; i<=getHeight(); i+= 80)
+        {
+            Wall wall_vert2 = new Wall();
+            addObject(wall_vert2, wall_vert2.getImage().getWidth()/4 ,i );
+            wall_vert2.setRotation(90);
+        }
         
         for(int j=0; j<wall.length; j++){
             wall[j]=new Wall();
@@ -71,21 +137,7 @@ public class mainHouseRoom extends World
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
             addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
         }
-        
-        //builds the vertical paths
-        for(int i=0; i<=getHeight(); i+= 40)
-        {
-            Wall wall_vert = new Wall();
-            addObject(wall_vert, getWidth(),i);
-        }
-        
-        //builds the vertical paths
-        for(int i=150; i<=getHeight(); i+= 40)
-        {
-            Wall wall_vert2 = new Wall();
-            addObject(wall_vert2, 0 ,i );
-        }
-        
+  
     }
     
     public void enterRoomText(){

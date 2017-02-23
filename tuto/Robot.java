@@ -32,11 +32,11 @@ public class Robot extends SmoothMover
         for (int i = 0; i < moveAmt; i++)
         {
             setLocation(getX() + dx, getY());
-            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null) || (getOneIntersectingObject(Elder.class) != null)){ 
+            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null) || (getOneIntersectingObject(Elder.class) != null) || (getOneIntersectingObject(Door.class) != null)){ 
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
-            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null) || (getOneIntersectingObject(Elder.class) != null)){
+            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null) || (getOneIntersectingObject(Elder.class) != null) || (getOneIntersectingObject(Door.class) != null)){
                 setLocation(getX(), getY() - dy);
             }
         }
