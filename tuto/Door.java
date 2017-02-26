@@ -19,12 +19,16 @@ public class Door extends Actor
      */
     public void act() 
     {
-       addHiddenSprite();
        canSeeRobot();
     } 
     
+    protected void addedToWorld(World w)
+    {
+    addHiddenSprite();
+}
+
     protected void addHiddenSprite() {   
-        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 40, 10, 5, true);  
+        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 50, 0, 0, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
     

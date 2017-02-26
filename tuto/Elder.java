@@ -16,18 +16,20 @@ public class Elder extends Actor
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight44.png");
     private long timeStarted = System.currentTimeMillis();
+
     /**
      * Act - do whatever the Elder wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        addHiddenSprite();
         elderDialog();
-        //blink();
-        
-        
+        //blink();   
     }
+    
+    protected void addedToWorld(World w){
+    addHiddenSprite();
+}
     
     public void blink(){
         eyes_counter1--;
