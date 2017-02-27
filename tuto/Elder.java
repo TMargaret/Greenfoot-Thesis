@@ -14,7 +14,7 @@ public class Elder extends Actor
     boolean isActive = false;
     private TextPanel helloText, taskText, taskText2, taskText3, taskText4, taskText5, taskText6;
     private GreenfootImage knight = getImage();
-    private GreenfootImage knight_eyes = new GreenfootImage("knight44.png");
+    private GreenfootImage knight_eyes = new GreenfootImage("knight41.png");
 
     /**
      * Act - do whatever the Elder wants to do. This method is called whenever

@@ -67,7 +67,7 @@ public class WrittenText
     }
     
     public String lockedDoor(){
-        return "Είναι κλειδωμένη...\nΧρειάζομαι κάποιο κλειδί...";
+        return "Είναι κλειδωμένη...\n\nΔεν έχω ακόμα τις γνώσεις για να την ανοίξω...";
     }
     
     

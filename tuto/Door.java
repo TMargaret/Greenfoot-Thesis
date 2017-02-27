@@ -9,7 +9,7 @@ import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo
  */
 public class Door extends Actor
 {
-    int counter = 5;
+    int counter = 5, firstMessageFlag = 0;
     boolean isActive = false;
     private TextPanel textPanel;
     private HiddenSprite hs;
@@ -50,9 +50,12 @@ public class Door extends Actor
                         }
                     }
                     if (Greenfoot.isKeyDown("enter")){
-                        counter = 40;
+                        counter = 100;
                         getWorld().removeObject(textPanel);
-                        isActive = false;
+                        firstMessageFlag = 1;
+                    }
+                    if ((isActive) & (firstMessageFlag == 1) & (counter<0)){
+                        String key_obj = Greenfoot.ask("Δημιούργησε ένα αντικείμενο key");
                     }
                 }
             }
