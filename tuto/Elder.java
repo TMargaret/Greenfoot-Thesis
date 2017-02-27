@@ -10,11 +10,16 @@ import java.util.List;  // (World, Actor, GreenfootImage, Greenfoot and MouseInf
 public class Elder extends Actor
 {
     private HiddenSprite hs;
-    int counter = 10, count_enter = 0, eyes_counter1 = 50, eyes_counter2 = 100;
-    boolean isActive = false;
+    private int counter = 10, count_enter = 0, eyes_counter1 = 50, eyes_counter2 = 100;
+    private boolean isActive = false;
+    private static boolean doneDialogue = false;
     private TextPanel helloText, taskText, taskText2, taskText3, taskText4, taskText5, taskText6;
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight41.png");
+    
+    public Elder(){
+        doneDialogue = false;
+    }
 
     /**
      * Act - do whatever the Elder wants to do. This method is called whenever
@@ -22,7 +27,7 @@ public class Elder extends Actor
      */
     public void act() 
     {
-        elderDialog();
+        elderDialogue();
         blink();   
     }
     
@@ -34,21 +39,21 @@ public class Elder extends Actor
         eyes_counter1--;
         eyes_counter2--;
         if (eyes_counter1 <0){
-            setImage(knight_eyes); 
+            setImage(knight); 
         }
         if (eyes_counter2 <0){
-            setImage(knight);
-            eyes_counter1 = 50;
-            eyes_counter2 = 100;
+            setImage(knight_eyes);
+            eyes_counter1 = 5;
+            eyes_counter2 = 170;
         }
     }
     
-        protected void addHiddenSprite() {   
+    protected void addHiddenSprite() {   
         hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 40, 10, 5, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
     
-     public void elderDialog(){
+     public void elderDialogue(){
         
         if( hs.getWorld() != null ) {   
             List<Actor> things = hs.getHitBoxIntersections();    
@@ -110,14 +115,17 @@ public class Elder extends Actor
                         if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0){
                             counter = 30;
                             getWorld().removeObject(taskText6);
-                            //taskText6 = new TextPanel("taskText6");
-                            //getWorld().addObject(taskText6, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                            count_enter = 6;
+                            count_enter = 7;
+                            doneDialogue = true;
                         }
                     }      
                    }
                 }
             }
+        }
+        
+        public boolean getDoneWithDialogue(){
+            return doneDialogue;
         }
     
 

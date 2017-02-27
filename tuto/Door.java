@@ -13,6 +13,7 @@ public class Door extends Actor
     boolean isActive = false;
     private TextPanel textPanel;
     private HiddenSprite hs;
+    private Elder myElder = new Elder();
     /**
      * Act - do whatever the Door wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,8 +25,8 @@ public class Door extends Actor
     
     protected void addedToWorld(World w)
     {
-    addHiddenSprite();
-}
+        addHiddenSprite();
+    }
 
     protected void addHiddenSprite() {   
         hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 50, 0, 0, true);  
@@ -50,13 +51,15 @@ public class Door extends Actor
                         }
                     }
                     if (Greenfoot.isKeyDown("enter")){
-                        counter = 100;
+                        counter = 40;
                         getWorld().removeObject(textPanel);
                         firstMessageFlag = 1;
                     }
-                    if ((isActive) & (firstMessageFlag == 1) & (counter<0)){
-                        String key_obj = Greenfoot.ask("Δημιούργησε ένα αντικείμενο key");
+                    if ((firstMessageFlag == 1)){
+                        if (myElder.getDoneWithDialogue()){
+                            String key_obj = Greenfoot.ask("Δημιούργησε ένα αντικείμενο key");
                     }
+                   }
                 }
             }
         }
