@@ -12,10 +12,9 @@ public class Elder extends Actor
     private HiddenSprite hs;
     int counter = 10, count_enter = 0, eyes_counter1 = 50, eyes_counter2 = 100;
     boolean isActive = false;
-    private TextPanel helloText, taskText, taskText2, taskText3, taskText4, taskText5;
+    private TextPanel helloText, taskText, taskText2, taskText3, taskText4, taskText5, taskText6;
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight44.png");
-    private long timeStarted = System.currentTimeMillis();
 
     /**
      * Act - do whatever the Elder wants to do. This method is called whenever
@@ -24,7 +23,7 @@ public class Elder extends Actor
     public void act() 
     {
         elderDialog();
-        //blink();   
+        blink();   
     }
     
     protected void addedToWorld(World w){
@@ -35,29 +34,13 @@ public class Elder extends Actor
         eyes_counter1--;
         eyes_counter2--;
         if (eyes_counter1 <0){
-            setImage(knight_eyes);
-            
+            setImage(knight_eyes); 
         }
         if (eyes_counter2 <0){
             setImage(knight);
-            eyes_counter1 = 500;
-            eyes_counter2 = 1000;
+            eyes_counter1 = 50;
+            eyes_counter2 = 100;
         }
-        //System.out.println(timeStarted);
-        long currentTime = System.currentTimeMillis();
-        long elapsedTime = currentTime - timeStarted;
-        //System.out.println(currentTime);
-
-        // if (elapsedTime / 1000 > 2 && elapsedTime / 1000 < 4 )
-        // {
-           // //timeStarted = currentTime;
-            // setImage(knight_eyes);
-        // }
-        // if(elapsedTime / 1000 > 4){
-            // setImage(knight);
-            // elapsedTime = 0;
-            // timeStarted = 0;
-        // }
     }
     
         protected void addHiddenSprite() {   
@@ -116,6 +99,20 @@ public class Elder extends Actor
                             taskText5 = new TextPanel("taskText5");
                             getWorld().addObject(taskText5, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 5;
+                        }
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0){
+                            counter = 30;
+                            getWorld().removeObject(taskText5);
+                            taskText6 = new TextPanel("taskText6");
+                            getWorld().addObject(taskText6, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            count_enter = 6;
+                        }
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0){
+                            counter = 30;
+                            getWorld().removeObject(taskText6);
+                            //taskText6 = new TextPanel("taskText6");
+                            //getWorld().addObject(taskText6, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            count_enter = 6;
                         }
                     }      
                    }

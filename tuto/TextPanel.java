@@ -15,6 +15,7 @@ public class TextPanel extends Actor
    // public static final int TOTAL_ANSWERS = 6;
     private String status = null;
     private WrittenText text;
+    private int counter = 1;
     //private int iScore, lives, wrong_answers = 0;
 
     private GreenfootImage image;
@@ -30,8 +31,11 @@ public class TextPanel extends Actor
     
     public void act()
     {
-        makeText();
     }
+    
+    protected void addedToWorld(World w){
+        makeText();
+}
     
     private void makeText(){
         
@@ -55,8 +59,8 @@ public class TextPanel extends Actor
             String mytext = text.welcomeMsg();
             makeImage(mytext, "elder");
         }
-        if (status == "taskText") {
-            String mytext = text.taskText();
+        if (status == "taskText1") {
+            String mytext = text.taskText1();
             makeImage(mytext, "elder");
         }
         if (status == "taskText2") {
@@ -73,6 +77,10 @@ public class TextPanel extends Actor
         }
         if (status == "taskText5") {
             String mytext = text.taskText5();
+            makeImage(mytext, "elder");
+        }
+        if (status == "taskText6") {
+            String mytext = text.taskText6();
             makeImage(mytext, "elder");
         }
         if (status == "lockedDoor") {
@@ -116,23 +124,14 @@ public class TextPanel extends Actor
         image.fillRect(0, 0, image.getWidth(),image.getHeight());
         image.setColor(new Color(200, 163, 92, 100));
         image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
-        //Font font = image.getFont();
-        //font = font.deriveFont(FONT_SIZE);
         image.setFont(new Font(Font.MONOSPACED, Font.BOLD, 22));
         image.setColor(Color.WHITE);
         image.drawString(title, 30, 50);
-        //image.drawString(icon, 60, 150);
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
-       if (status == "welcomeMsg" || status == "taskText" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);
+       if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);
        if (status == "taskText3" || status == "taskText4" || status == "taskText5") image.drawString("Πάτα ENTER", 30, 290);
-       // if (status == "fail2") image.drawString("Πάτα ENTER για να παίξεις ξανά", 60, 250);
-       // if (status == "win1") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
-       // if (status == "win2") image.drawString("Πάτα ENTER για να επιστρέψεις\n στο μενού", 60, 250);
-       // if ((status == "end_quiz") || (status == "end_quiz_win")) image.drawString("Λάθος απαντήσεις: " + wrong_answers, 60, 180);
-       // if ((status == "end_quiz") || (status == "end_quiz_win")) image.drawString("Πάτα το MENOΥ για έξοδο", 60, 300);
+       if (status == "taskText6") image.drawString("Πάτα ENTER", 30, 290);
         setImage(image);
-        
     }
-
-    
+  
 }

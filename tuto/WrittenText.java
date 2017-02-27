@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class WrittenText extends Actor
+public class WrittenText
 {
     /**
      * Act - do whatever the WrittenText wants to do. This method is called whenever
@@ -37,7 +37,7 @@ public class WrittenText extends Actor
         "βοηθήσω να φύγεις αρκεί να κάνεις \nκάτι για μένα.";
     }
     
-    public String taskText(){
+    public String taskText1(){
         return "Υπάρχουν δύο καλύβες έξω, οι οποίες \nχρειάζονται ανακατασκευή.\n\n"+
         "Για να τις φτιάξεις θα χρειαστείς τις\nεξής πρώτες ύλες:\nΞύλο, Πηλό και Άχυρο.";
     }
@@ -62,8 +62,12 @@ public class WrittenText extends Actor
         +"\n-Οι παρενθέσεις συνοδεύουν πάντα το\nόνομα της κλάσης.\n-Το ερωτηματικό μπαίνει απαραίτητα στο\nτέλος κάθε γραμμής κώδικα!";
     }
     
+    public String taskText6(){
+        return "Είσαι έτοιμος για την αποστολή σου.\n\nΘυμήσου!\nnew όνομα_κλάσης();\n\nΗ δημιουργία αντικειμένων θα σου\nανοίξει πολλές πόρτες... ";
+    }
+    
     public String lockedDoor(){
-        return "Είναι κλειδωμένη...\nΠρέπει να κάνω κάτι άλλο πρώτα.";
+        return "Είναι κλειδωμένη...\nΧρειάζομαι κάποιο κλειδί...";
     }
     
     
