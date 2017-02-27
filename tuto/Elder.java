@@ -10,10 +10,10 @@ import java.util.List;  // (World, Actor, GreenfootImage, Greenfoot and MouseInf
 public class Elder extends Actor
 {
     private HiddenSprite hs;
-    private int counter = 10, count_enter = 0, eyes_counter1 = 50, eyes_counter2 = 100;
+    private int counter = 10, count_enter = 0, eyes_counter = 150;
     private boolean isActive = false;
     private static boolean doneDialogue = false;
-    private TextPanel helloText, taskText, taskText2, taskText3, taskText4, taskText5, taskText6;
+    private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6;
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight41.png");
     
@@ -36,15 +36,15 @@ public class Elder extends Actor
 }
     
     public void blink(){
-        eyes_counter1--;
-        eyes_counter2--;
-        if (eyes_counter1 <0){
+        eyes_counter--;
+        if (eyes_counter > 10){
             setImage(knight); 
         }
-        if (eyes_counter2 <0){
+        if (eyes_counter < 10){
             setImage(knight_eyes);
-            eyes_counter1 = 5;
-            eyes_counter2 = 170;
+            if (eyes_counter == 0){
+                eyes_counter = 150;
+            }
         }
     }
     
@@ -73,13 +73,13 @@ public class Elder extends Actor
                         if (Greenfoot.isKeyDown("enter") && count_enter == 0 && counter<0){
                             counter = 20;
                             getWorld().removeObject(helloText);
-                            taskText = new TextPanel("taskText");
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            taskText1 = new TextPanel("taskText1");
+                            getWorld().addObject(taskText1, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 1;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter <0){
                             counter = 30;
-                            getWorld().removeObject(taskText);
+                            getWorld().removeObject(taskText1);
                             taskText2 = new TextPanel("taskText2");
                             getWorld().addObject(taskText2, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 2;

@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Mon Feb 27 20:58:08 EET 2017
+#Mon Feb 27 21:47:49 EET 2017
 target16.name=Level_1
 dependency35.to=Elder
 editor.swing.0.y=18
@@ -80,8 +80,8 @@ target3.x=10
 target7.typeParameters=
 target8.height=50
 dependency26.to=Grass
-mainWindow.y=0
-mainWindow.x=-8
+mainWindow.y=14
+mainWindow.x=-3
 target3.showInterface=false
 target12.showInterface=false
 target17.typeParameters=
@@ -297,7 +297,7 @@ target6.width=80
 readme.width=47
 target20.width=80
 mainWindow.height=1005
-editor.swing.0.width=1247
+editor.swing.0.width=1246
 target5.showInterface=false
 target14.showInterface=false
 dependency34.to=TextPanel
