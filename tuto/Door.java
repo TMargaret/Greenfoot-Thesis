@@ -58,9 +58,11 @@ public class Door extends Actor
                     if ((firstMessageFlag == 1)){
                         if (myElder.getDoneWithDialogue()){
                             String key_obj = Greenfoot.ask("Δημιούργησε ένα αντικείμενο key");
-                            if (key_obj == "new Key();")
+                            boolean is_equal = key_obj.equalsIgnoreCase("new Key();");
+                            if (is_equal)
                             {
                                getWorld().removeObject(this);
+                               return;
                             }
                     }
                    }

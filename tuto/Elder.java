@@ -10,7 +10,7 @@ import java.util.List;  // (World, Actor, GreenfootImage, Greenfoot and MouseInf
 public class Elder extends Actor
 {
     private HiddenSprite hs;
-    private int counter = 10, count_enter = 0, eyes_counter = 150;
+    private int counter = 10, count_enter = 0, eyes_counter;
     private boolean isActive = false;
     private static boolean doneDialogue = false;
     private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6;
@@ -36,17 +36,14 @@ public class Elder extends Actor
 }
     
     public void blink(){
-        eyes_counter--;
-        if (eyes_counter > 10){
-            setImage(knight); 
-        }
-        if (eyes_counter < 10){
-            setImage(knight_eyes);
-            if (eyes_counter == 0){
-                eyes_counter = 150;
-            }
-        }
+    if (++eyes_counter == 150){
+        eyes_counter = 0;
+        setImage(knight);
     }
+    else if (eyes_counter == 140){
+        setImage(knight_eyes);
+    }
+}
     
     protected void addHiddenSprite() {   
         hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 40, 10, 5, true);  
