@@ -70,6 +70,10 @@ public class WrittenText
         return "Είναι κλειδωμένη...\n\nΔεν έχω ακόμα τις γνώσεις για να την ανοίξω...";
     }
     
+    public String warningDoor(){
+        return "Ωχ! Έχασα ενέργεια!\n\nΑς ξαναπροσπαθήσω, αλλιώς θα συμβουλευτώ\nκαι πάλι τον Objectis.";
+    }
+    
     
     
 }

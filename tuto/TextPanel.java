@@ -5,7 +5,7 @@ import java.awt.Font;
 //κλάση του τελικού πίνακα ScoreBoard ο οποίος χρησιμοποιείται είτε σε περίπτωση νίκης, είτε ήττας
 //author M Kölling
 //modifications Trifou Margaret
-//BrokenHutMessage, RoomEntranceText, welcomeMsg, taskText, taskText2
+//BrokenHutMessage, RoomEntranceText, welcomeMsg, taskText1-6,lockedDoor, warningForDoor
 
 public class TextPanel extends Actor
 {
@@ -87,6 +87,10 @@ public class TextPanel extends Actor
             String mytext = text.lockedDoor();
             makeImage(mytext);
         }
+        if (status == "warningForDoor"){
+            String mytext = text.warningDoor();
+            makeImage(mytext);
+        }
     }
     
     private void makeImage(String title)
@@ -106,7 +110,7 @@ public class TextPanel extends Actor
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
         if ((status == "BrokenHutMessage") || (status == "RoomEntranceText")
         || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 290);
-        if ((status == "lockedDoor")) image.drawString("Πάτα ENTER", 30, 290);
+        if ((status == "lockedDoor") || (status == "warningForDoor")) image.drawString("Πάτα ENTER", 30, 290);
         // if (status == "start1_1" | status == "start2_1") image.drawString("Πάτα το ΚΑΤΩ ΒΕΛΟΣ", 60, 300);
         // if (status == "start1_2") image.drawString("Πάτα SPACE για να ξεκινήσεις", 60, 300);
         // if (status == "start2") image.drawString("Πάτα ENTER", 200, 280);

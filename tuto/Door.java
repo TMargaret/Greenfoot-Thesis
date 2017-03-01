@@ -20,9 +20,9 @@ public class Door extends Actor
      */
     public void act() 
     {
-       canSeeRobot();
+        canSeeRobot();
     } 
-    
+
     protected void addedToWorld(World w)
     {
         addHiddenSprite();
@@ -32,7 +32,7 @@ public class Door extends Actor
         hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 50, 0, 0, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
-    
+
     public void canSeeRobot(){
         if( hs.getWorld() != null ) {   
             List<Actor> things = hs.getHitBoxIntersections();    
@@ -41,7 +41,7 @@ public class Door extends Actor
                 for(int i=0; i < things.size(); i++ ) {       
                     Actor a = things.get(i);        
                     if(a instanceof HiddenSprite)        
-                    continue;        
+                        continue;        
                     if( a instanceof Robot) {  
                         counter--;
                         if (counter<0 && !isActive){
@@ -61,14 +61,17 @@ public class Door extends Actor
                             boolean is_equal = key_obj.equalsIgnoreCase("new Key();");
                             if (is_equal)
                             {
-                               getWorld().removeObject(this);
-                               return;
+                                getWorld().removeObject(this);
+                                return;
                             }
+
+                        }
+
                     }
-                   }
+
                 }
             }
         }
     }
-       
+
 }
