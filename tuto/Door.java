@@ -10,7 +10,7 @@ import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo
 public class Door extends Actor
 {
     int counter = 5, firstMessageFlag = 0;
-    boolean isActive = false;
+    boolean isActive = false, hasInteracted = false;
     private TextPanel textPanel;
     private HiddenSprite hs;
     private Elder myElder = new Elder();
@@ -20,6 +20,9 @@ public class Door extends Actor
      */
     public void act() 
     {
+        if (!isActive && hasInteracted){
+            hasInteracted = false;
+        }
         canSeeRobot();
     } 
 
@@ -44,7 +47,7 @@ public class Door extends Actor
                         continue;        
                     if( a instanceof Robot) {  
                         counter--;
-                        if (counter<0 && !isActive){
+                        if (counter<0 && !isActive && !hasInteracted){
                             textPanel = new TextPanel("lockedDoor");
                             getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             isActive = true;
@@ -56,13 +59,19 @@ public class Door extends Actor
                         firstMessageFlag = 1;
                     }
                     if ((firstMessageFlag == 1)){
-                        if (myElder.getDoneWithDialogue()){
+                        if (myElder.getDoneWithDialogue() && !hasInteracted){
+                            hasInteracted = true;
                             String key_obj = Greenfoot.ask("Δημιούργησε ένα αντικείμενο key");
                             boolean is_equal = key_obj.equalsIgnoreCase("new Key();");
+                            
                             if (is_equal)
                             {
                                 getWorld().removeObject(this);
-                                return;
+                                isActive = false;
+                                break;
+                            }else {
+                                
+                                
                             }
 
                         }

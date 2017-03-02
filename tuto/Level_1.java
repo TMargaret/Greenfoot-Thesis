@@ -12,6 +12,8 @@ public class Level_1 extends World
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
+    private Robot robot;
+    private ArrayList <Hut> hutList = new ArrayList<Hut>();
 
     /**
      * Constructor for objects of class MyWorld.
@@ -22,6 +24,16 @@ public class Level_1 extends World
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1); 
         prepare();
+    }
+
+    public void act(){
+        boolean found = false;
+        for(Hut hut : hutList){
+            if (hut.getActive()){
+                found  = true;
+            }
+        }
+        robot.setCanMove(!found);
     }
 
     /**
@@ -37,10 +49,10 @@ public class Level_1 extends World
         mainHouse my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
 
-        Robot robot = new Robot();
+        robot = new Robot();
         addObject(robot,79,525);
     }
-    
+
     /**
      *Adds the olds hut in the world
      *
@@ -54,10 +66,12 @@ public class Level_1 extends World
         addObject(oldHut,129,287);
 
         Hut oldHut2 = new Hut();
-        addObject(oldHut2,883,287);  
+        addObject(oldHut2,883,287); 
+
+        hutList.add(oldHut);
+        hutList.add(oldHut2);
     }
 
-    
     /**
      * Adds the walkable paths
      */
@@ -66,15 +80,14 @@ public class Level_1 extends World
         Road[] roadArray=new Road[25];
         Road[] roadArray2=new Road[25];
 
-        
         //iteration in order to build a horizontal path
         for(int j=0; j<roadArray.length; j++){
             roadArray[j]=new Road();
             roadArray2[j]=new Road();
             addObject(roadArray[j],j*roadArray[j].getImage().getWidth(),getHeight()- roadArray[j].getImage().getHeight()/2);
-           // addObject(roadArray2[j],j*roadArray[j].getImage().getWidth(),getHeight()- roadArray[j].getImage().getHeight());
+            // addObject(roadArray2[j],j*roadArray[j].getImage().getWidth(),getHeight()- roadArray[j].getImage().getHeight());
         }
-        
+
         //builds the vertical paths
         for(int i=390; i<=540; i+=50)
         {
@@ -86,13 +99,12 @@ public class Level_1 extends World
             addObject(road3,X_ROAD_HUT2,i);
         }
     }
-     
-    
+
     public void addGrass(){
         //creates a new array that holds the grass actor
         Grass[] grass =new Grass[25];
         Grass[] grass2 =new Grass[25];
-        
+
         //iteration in order to build a horizontal path
         for(int j=0;j<grass.length;j++){
             grass[j]=new Grass();
@@ -101,5 +113,5 @@ public class Level_1 extends World
             addObject(grass2[j],j*grass[j].getImage().getWidth(),getHeight()/2 + grass[j].getImage().getHeight()/2); 
         }
     }
-    
+
 }

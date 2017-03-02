@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Hut extends Actor
 {
     int counter = 10;
-    boolean isActive = false;
+    boolean isActive = false, displayMess = false;
     private TextPanel textPanel;
 
     /**
@@ -20,6 +20,10 @@ public class Hut extends Actor
     {
         canSeeRobot();
     } 
+    
+    public boolean getActive(){
+        return displayMess;
+    }
     
     
     public void canSeeRobot(){
@@ -32,11 +36,13 @@ public class Hut extends Actor
                 textPanel = new TextPanel("BrokenHutMessage");
                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                 isActive = true;
+                displayMess = true;
             }
         }
         if (Greenfoot.isKeyDown("enter")){
                 counter = 10;
                 getWorld().removeObject(textPanel);
+                displayMess = false;
                 
             }
         if (!isTouching(Robot.class))

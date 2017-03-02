@@ -10,6 +10,7 @@ import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo
 public class Robot extends SmoothMover
 {
     private Level_1 myworld;
+    private boolean canMove = true;
     
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever
@@ -20,8 +21,15 @@ public class Robot extends SmoothMover
        move(5);  
     } 
     
+    public void setCanMove(boolean moveStatus){
+        canMove = moveStatus;
+    }
+    
     public void move(int moveAmt){
         // determine direction by keypress checking
+        if (!canMove){
+            return;
+        }
         int dx = 0, dy = 0;
         if (Greenfoot.isKeyDown("right")) dx += 1;
         if (Greenfoot.isKeyDown("left")) dx -= 1;
