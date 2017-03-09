@@ -10,8 +10,9 @@ import java.util.List;  // (World, Actor, GreenfootImage, Greenfoot and MouseInf
 public class Elder extends Actor
 {
     private HiddenSprite hs;
-    private int counter = 10, count_enter = 0, eyes_counter;
-    private boolean isActive = false;
+    private int counter = 10, eyes_counter;
+    private static boolean isActive = false;
+    private static int count_enter = 0;
     private static boolean doneDialogue = false;
     private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6;
     private GreenfootImage knight = getImage();
@@ -123,6 +124,12 @@ public class Elder extends Actor
         
         public boolean getDoneWithDialogue(){
             return doneDialogue;
+        }
+        
+        public void setDialogue(boolean dialogue){
+            doneDialogue = dialogue;
+            count_enter = 0;
+            isActive = false;
         }
     
 
