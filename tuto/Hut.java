@@ -20,19 +20,17 @@ public class Hut extends Actor
     {
         canSeeRobot();
     } 
-    
+
     public boolean getActive(){
         return displayMessage;
     }
-    
-    
+
     public void canSeeRobot(){
-        
         if (isTouching(Robot.class))
         {
             counter--;
             if (counter<0 && !isActive){
-                
+
                 textPanel = new TextPanel("BrokenHutMessage");
                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                 isActive = true;
@@ -40,15 +38,15 @@ public class Hut extends Actor
             }
         }
         if (Greenfoot.isKeyDown("enter")){
-                counter = 10;
-                getWorld().removeObject(textPanel);
-                displayMessage = false;
-                
-            }
+            counter = 10;
+            getWorld().removeObject(textPanel);
+            displayMessage = false;
+
+        }
         if (!isTouching(Robot.class))
         {
             isActive = false;
-            
+
         }
     }
 }

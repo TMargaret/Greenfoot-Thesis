@@ -11,15 +11,17 @@ public class Elder extends Actor
 {
     private HiddenSprite hs;
     private int counter = 10, eyes_counter;
-    private static boolean isActive = false;
-    private static int count_enter = 0;
+    private boolean isActive, displayMessage = false;
+    private static int count_enter;
     private static boolean doneDialogue = false;
     private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6;
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight41.png");
-    
+
     public Elder(){
         doneDialogue = false;
+        count_enter = 0;
+        isActive = false;
     }
 
     /**
@@ -28,45 +30,51 @@ public class Elder extends Actor
      */
     public void act() 
     {
+
         elderDialogue();
         blink();   
     }
-    
+
+    public boolean getActive(){
+        return displayMessage;
+    }
+
     protected void addedToWorld(World w){
-    addHiddenSprite();
-}
-    
+        addHiddenSprite();
+    }
+
     public void blink(){
-    if (++eyes_counter == 150){
-        eyes_counter = 0;
-        setImage(knight);
+        if (++eyes_counter == 150){
+            eyes_counter = 0;
+            setImage(knight);
+        }
+        else if (eyes_counter == 140){
+            setImage(knight_eyes);
+        }
     }
-    else if (eyes_counter == 140){
-        setImage(knight_eyes);
-    }
-}
-    
+
     protected void addHiddenSprite() {   
         hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 40, 10, 5, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
-    
-     public void elderDialogue(){
-        
+
+    public void elderDialogue(){
+
         if( hs.getWorld() != null ) {   
             List<Actor> things = hs.getHitBoxIntersections();    
             if( things.size() > 1 ) {      
                 int infront = 0;      
                 for(int i=0; i < things.size(); i++ ) {       
-                    Actor a = things.get(i);        
+                    Actor a = things.get(i); 
                     if(a instanceof HiddenSprite)        
-                    continue;        
+                        continue;        
                     if( a instanceof Robot) {  
                         counter--;
                         if (counter<0 && !isActive){
                             helloText = new TextPanel("welcomeMsg");
                             getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             isActive = true;
+                            displayMessage = true;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 0 && counter<0){
                             counter = 20;
@@ -115,22 +123,24 @@ public class Elder extends Actor
                             getWorld().removeObject(taskText6);
                             count_enter = 7;
                             doneDialogue = true;
+                            displayMessage = false;
                         }
-                    }      
-                   }
+                    }
+
                 }
             }
         }
-        
-        public boolean getDoneWithDialogue(){
-            return doneDialogue;
-        }
-        
-        public void setDialogue(boolean dialogue){
-            doneDialogue = dialogue;
-            count_enter = 0;
-            isActive = false;
-        }
-    
+
+    }
+
+    public boolean getDoneWithDialogue(){
+        return doneDialogue;
+    }
+
+    public void setDialogue(boolean dialogue){
+        doneDialogue = dialogue;
+        count_enter = 0;
+        isActive = false;
+    }
 
 }

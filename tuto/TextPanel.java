@@ -16,6 +16,7 @@ public class TextPanel extends Actor
     private String status = null;
     private WrittenText text;
     private int counter = 1;
+    private static boolean displayMessage = false;
     //private int iScore, lives, wrong_answers = 0;
 
     private GreenfootImage image;
@@ -38,7 +39,7 @@ public class TextPanel extends Actor
 }
     
     private void makeText(){
-        
+        displayMessage = false;
         if (status == "BrokenHutMessage") {
             String mytext = text.brokenHut();
             makeImage(mytext);
@@ -54,6 +55,7 @@ public class TextPanel extends Actor
         if (status == "RoomEntranceText") {
             String mytext = text.roomEntranceText();
             makeImage(mytext);
+            displayMessage = true;
         }
         if (status == "welcomeMsg") {
             String mytext = text.welcomeMsg();
@@ -136,6 +138,10 @@ public class TextPanel extends Actor
        if (status == "taskText3" || status == "taskText4" || status == "taskText5") image.drawString("Πάτα ENTER", 30, 290);
        if (status == "taskText6") image.drawString("Πάτα ENTER", 30, 290);
         setImage(image);
+    }
+    
+        public boolean getActive(){
+        return displayMessage;
     }
   
 }

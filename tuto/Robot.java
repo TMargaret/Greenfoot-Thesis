@@ -11,20 +11,20 @@ public class Robot extends SmoothMover
 {
     private Level_1 myworld;
     private boolean canMove = true;
-    
+
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-       move(5);  
+        move(5);  
     } 
-    
+
     public void setCanMove(boolean moveStatus){
         canMove = moveStatus;
     }
-    
+
     public void move(int moveAmt){
         // determine direction by keypress checking
         if (!canMove){
@@ -35,21 +35,33 @@ public class Robot extends SmoothMover
         if (Greenfoot.isKeyDown("left")) dx -= 1;
         if (Greenfoot.isKeyDown("down")) dy += 1;
         if (Greenfoot.isKeyDown("up")) dy -= 1;
-        
+
         //check for wall on each step of move in both vertical and horizontal directions
         for (int i = 0; i < moveAmt; i++)
         {
             setLocation(getX() + dx, getY());
-            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null) || (getOneIntersectingObject(Elder.class) != null) || (getOneIntersectingObject(Door.class) != null)){ 
+            if ((getOneIntersectingObject(Wall.class) != null) || 
+            (getOneIntersectingObject(Grass.class) != null) || 
+            (getOneIntersectingObject(Elder.class) != null) || 
+            (getOneIntersectingObject(Door.class) != null) ||
+            (getOneIntersectingObject(Lumber.class) !=null) ||
+            (getOneIntersectingObject(Clay.class) !=null) ||
+            (getOneIntersectingObject(Straw.class) !=null)){ 
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
-            if ((getOneIntersectingObject(Wall.class) != null) || (getOneIntersectingObject(Grass.class) != null) || (getOneIntersectingObject(Elder.class) != null) || (getOneIntersectingObject(Door.class) != null)){
+            if ((getOneIntersectingObject(Wall.class) != null)
+            || (getOneIntersectingObject(Grass.class) != null) 
+            || (getOneIntersectingObject(Elder.class) != null) 
+            || (getOneIntersectingObject(Door.class) != null)
+            || (getOneIntersectingObject(Lumber.class) !=null)
+            || (getOneIntersectingObject(Clay.class) !=null)
+            || (getOneIntersectingObject(Straw.class) !=null)){
                 setLocation(getX(), getY() - dy);
             }
         }
     }
-    
+
     /**
      * Return true if we can see an object of class 'clss' right where we are. 
      * False if there is no such object here.
@@ -59,5 +71,5 @@ public class Robot extends SmoothMover
         Actor actor = getOneObjectAtOffset(0, 0, clss);
         return actor != null;        
     }
-    
+
 }

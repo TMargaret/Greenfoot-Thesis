@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class mainHouseRoom extends World
 {
     Robot robot;
+    Elder elder;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
@@ -22,12 +23,17 @@ public class mainHouseRoom extends World
         super(1000, 600, 1);
         prepare();
     }
-    
+
     public void act(){
         enterRoomText();
         exitRoom();
+        boolean found = false;
+            if ((elder.getActive())){
+                found  = true;
+            }
+        robot.setCanMove(!found);
     }
-    
+
     /**
      * An example of a method - replace this comment with your own
      *
@@ -45,7 +51,7 @@ public class mainHouseRoom extends World
         Door door = new Door();
         addObject(door,719,233);
         door.setLocation(713,225);
-        
+
         Door door2 = new Door();
         addObject(door2,333,417);
         door2.setLocation(321,406);
@@ -55,7 +61,7 @@ public class mainHouseRoom extends World
         robot = new Robot();
         addObject(robot,80, 90);
 
-        Elder elder = new Elder();
+        elder = new Elder();
         addObject(elder,900,500);
 
         Clay clay = new Clay();
@@ -68,11 +74,11 @@ public class mainHouseRoom extends World
         Lumber lumber2 = new Lumber();
         addObject(lumber2,100,528);    
     }
-    
+
     public void addWall(){
         Wall[] wall = new Wall[25];
         Wall[] wall2 = new Wall[25];
-        
+
         //Room with Clay
         Wall wall79 = new Wall();
         addObject(wall79,712,81);
@@ -93,7 +99,7 @@ public class mainHouseRoom extends World
         Wall wall84 = new Wall();
         addObject(wall84,712,137);
         wall84.setRotation(90);
-        
+
         //Room with Wood
         Wall wall71 = new Wall();
         addObject(wall71,82,340);
@@ -110,11 +116,11 @@ public class mainHouseRoom extends World
         Wall wall75 = new Wall();
         addObject(wall75,321,547);
         wall75.setRotation(90);
-        
+
         Wall wall76 = new Wall();
         addObject(wall76,321,490);
         wall76.setRotation(90);
-        
+
         //builds the right vertical paths
         for(int i=0; i<=getHeight(); i+= 80)
         {
@@ -122,7 +128,7 @@ public class mainHouseRoom extends World
             addObject(wall_vert, getWidth() - wall_vert.getImage().getWidth()/4,i);
             wall_vert.setRotation(90);
         }
-        
+
         //builds the left vertical paths
         for(int i=150; i<=getHeight(); i+= 80)
         {
@@ -130,16 +136,16 @@ public class mainHouseRoom extends World
             addObject(wall_vert2, wall_vert2.getImage().getWidth()/4 ,i );
             wall_vert2.setRotation(90);
         }
-        
+
         for(int j=0; j<wall.length; j++){
             wall[j]=new Wall();
             wall2[j] = new Wall();
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
             addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
         }
-  
+
     }
-    
+
     public void enterRoomText(){
         counter2--;
         if (counter2<0 && flag == 0){
@@ -148,11 +154,11 @@ public class mainHouseRoom extends World
             flag = 1;
         }
         if (Greenfoot.isKeyDown("enter")){
-                counter2 = 50;
-                removeObject(entranceText);
-            }
+            counter2 = 50;
+            removeObject(entranceText);
+        }
     }
-    
+
     public void exitRoom(){
         if (robot.isAtEdge()){
             counter--;
@@ -162,9 +168,9 @@ public class mainHouseRoom extends World
                 isActive = true;
             }
         }
-            if (counter < 0){
-                removeObject(textPanel);
-                Greenfoot.setWorld(new Level_1());
-            }      
-        }
+        if (counter < 0){
+            removeObject(textPanel);
+            Greenfoot.setWorld(new Level_1());
+        }      
+    }
 }

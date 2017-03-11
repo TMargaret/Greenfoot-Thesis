@@ -18,18 +18,18 @@ public class mainHouse extends Actor
      */
     public void act() 
     {
-       enterInRoom();
+        enterInRoom();
     } 
-    
+
     public boolean getActive(){
         return displayMessage;
     }
-    
-     /**
+
+    /**
      * shows a message before entering the house
      */
-     public void enterInRoom(){
-         if (getOneIntersectingObject(Robot.class) != null){
+    public void enterInRoom(){
+        if (getOneIntersectingObject(Robot.class) != null){
             counter--;
             if (!isActive){
                 textPanel = new TextPanel("enteringRoom");
@@ -38,11 +38,11 @@ public class mainHouse extends Actor
                 displayMessage = true;
             }
         }
-            if (counter < 0){
-                getWorld().removeObject(textPanel);
-                displayMessage = false;
-                isActive = false;
-                Greenfoot.setWorld(new mainHouseRoom());
-            }      
-        }  
+        if (counter < 0){
+            getWorld().removeObject(textPanel);
+            displayMessage = false;
+            isActive = false;
+            Greenfoot.setWorld(new mainHouseRoom());
+        }      
+    }  
 }

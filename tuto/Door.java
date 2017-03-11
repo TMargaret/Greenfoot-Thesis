@@ -79,7 +79,6 @@ public class Door extends Actor
                                 }
                             }
                             if (Greenfoot.isKeyDown("1")){
-                                System.out.println("yes");
                                 getWorld().removeObject(textPanel2);
                                 hasInteracted = false;
                             }
