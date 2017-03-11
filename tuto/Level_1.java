@@ -13,6 +13,7 @@ public class Level_1 extends World
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
     private Robot robot;
+    private mainHouse my_mainHouse;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
 
     /**
@@ -29,7 +30,7 @@ public class Level_1 extends World
     public void act(){
         boolean found = false;
         for(Hut hut : hutList){
-            if (hut.getActive()){
+            if ((hut.getActive()) || (my_mainHouse.getActive()) ){
                 found  = true;
             }
         }
@@ -46,7 +47,7 @@ public class Level_1 extends World
         addRoad();
         addHut();
 
-        mainHouse my_mainHouse = new mainHouse();
+        my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
 
         robot = new Robot();
