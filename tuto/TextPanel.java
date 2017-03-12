@@ -85,6 +85,10 @@ public class TextPanel extends Actor
             String mytext = text.taskText6();
             makeImage(mytext, "elder");
         }
+        if (status == "taskTextEnd") {
+            String mytext = text.taskTextEnd();
+            makeImage(mytext, "elder");
+        }
         if (status == "lockedDoor") {
             String mytext = text.lockedDoor();
             makeImage(mytext);

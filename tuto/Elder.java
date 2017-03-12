@@ -10,11 +10,11 @@ import java.util.List;  // (World, Actor, GreenfootImage, Greenfoot and MouseInf
 public class Elder extends Actor
 {
     private HiddenSprite hs;
-    private int counter = 10, eyes_counter;
-    private boolean isActive, displayMessage = false;
+    private int counter = 10, eyes_counter, me = 0;
+    private boolean isActive, doNotMoveWhileTalking = false;
     private static int count_enter;
     private static boolean doneDialogue = false;
-    private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6;
+    private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6, taskTextEnd;
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight41.png");
 
@@ -35,10 +35,6 @@ public class Elder extends Actor
         blink();   
     }
 
-    public boolean getActive(){
-        return displayMessage;
-    }
-
     protected void addedToWorld(World w){
         addHiddenSprite();
     }
@@ -54,7 +50,7 @@ public class Elder extends Actor
     }
 
     protected void addHiddenSprite() {   
-        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 40, 10, 5, true);  
+        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/8 , 40, 0, 5, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
 
@@ -65,7 +61,7 @@ public class Elder extends Actor
             if( things.size() > 1 ) {      
                 int infront = 0;      
                 for(int i=0; i < things.size(); i++ ) {       
-                    Actor a = things.get(i); 
+                    Actor a = things.get(i);
                     if(a instanceof HiddenSprite)        
                         continue;        
                     if( a instanceof Robot) {  
@@ -74,7 +70,7 @@ public class Elder extends Actor
                             helloText = new TextPanel("welcomeMsg");
                             getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             isActive = true;
-                            displayMessage = true;
+                            setTalking(true);
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 0 && counter<0){
                             counter = 20;
@@ -121,9 +117,22 @@ public class Elder extends Actor
                         if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0){
                             counter = 30;
                             getWorld().removeObject(taskText6);
-                            count_enter = 7;
-                            doneDialogue = true;
-                            displayMessage = false;
+                            taskTextEnd = new TextPanel("taskTextEnd");
+                            getWorld().addObject(taskTextEnd, getWorld().getWidth()/2, getWorld().getHeight()/2);
+
+                        }
+                        if (Greenfoot.isKeyDown("1") && counter <0){
+                            counter = 30;
+                            getWorld().removeObject(taskTextEnd);
+                            setDialogue(true);
+                            setTalking(false);
+                        }
+                        if (Greenfoot.isKeyDown("2") && counter <0){
+                            counter = 20;
+                            getWorld().removeObject(taskTextEnd);
+                            setDialogue(false);
+                            count_enter = 0;
+                            isActive = false;
                         }
                     }
 
@@ -132,6 +141,13 @@ public class Elder extends Actor
         }
 
     }
+    public void setTalking(boolean isItTalking){
+        doNotMoveWhileTalking = isItTalking;
+    }
+
+    public boolean getTalking(){
+        return doNotMoveWhileTalking;
+    }
 
     public boolean getDoneWithDialogue(){
         return doneDialogue;
@@ -139,8 +155,11 @@ public class Elder extends Actor
 
     public void setDialogue(boolean dialogue){
         doneDialogue = dialogue;
-        count_enter = 0;
+    }
+    
+    public void setActive(boolean forActive){
         isActive = false;
+        count_enter =0;
     }
 
 }

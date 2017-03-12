@@ -27,11 +27,11 @@ public class mainHouseRoom extends World
     public void act(){
         enterRoomText();
         exitRoom();
-        boolean found = false;
-            if ((elder.getActive())){
-                found  = true;
-            }
-        robot.setCanMove(!found);
+        boolean doNotMove = false;
+        if ((elder.getTalking())){
+            doNotMove  = true;
+        }
+        robot.setCanMove(!doNotMove);
     }
 
     /**

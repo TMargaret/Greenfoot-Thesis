@@ -30,6 +30,7 @@ public class Robot extends SmoothMover
         if (!canMove){
             return;
         }
+
         int dx = 0, dy = 0;
         if (Greenfoot.isKeyDown("right")) dx += 1;
         if (Greenfoot.isKeyDown("left")) dx -= 1;
