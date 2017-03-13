@@ -28,7 +28,7 @@ public class mainHouseRoom extends World
         enterRoomText();
         exitRoom();
         boolean doNotMove = false;
-        if ((elder.getTalking()) || flag == 1){
+        if ((elder.getTalking()) || flag == 1 || isActive){
             doNotMove  = true;
         }
         robot.setCanMove(!doNotMove);
