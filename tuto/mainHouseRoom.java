@@ -28,7 +28,7 @@ public class mainHouseRoom extends World
         enterRoomText();
         exitRoom();
         boolean doNotMove = false;
-        if ((elder.getTalking())){
+        if ((elder.getTalking()) || flag == 1){
             doNotMove  = true;
         }
         robot.setCanMove(!doNotMove);
@@ -156,6 +156,7 @@ public class mainHouseRoom extends World
         if (Greenfoot.isKeyDown("enter")){
             counter2 = 50;
             removeObject(entranceText);
+            flag = 2;
         }
     }
 
