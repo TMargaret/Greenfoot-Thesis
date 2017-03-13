@@ -11,8 +11,8 @@ public class Elder extends Actor
 {
     private HiddenSprite hs;
     private int counter = 10, eyes_counter, me = 0;
-    private boolean isActive, doNotMoveWhileTalking = false;
-    private static int count_enter;
+    private static boolean isActive = false, doNotMoveWhileTalking = false;
+    private static int count_enter = 0;
     private static boolean doneDialogue = false;
     private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6, taskTextEnd;
     private GreenfootImage knight = getImage();
@@ -122,7 +122,7 @@ public class Elder extends Actor
 
                         }
                         if (Greenfoot.isKeyDown("1") && counter <0){
-                            counter = 30;
+                            counter = 20;
                             getWorld().removeObject(taskTextEnd);
                             setDialogue(true);
                             setTalking(false);
@@ -131,8 +131,7 @@ public class Elder extends Actor
                             counter = 20;
                             getWorld().removeObject(taskTextEnd);
                             setDialogue(false);
-                            count_enter = 0;
-                            isActive = false;
+                            setActive(false);
                         }
                     }
 
@@ -158,7 +157,7 @@ public class Elder extends Actor
     }
     
     public void setActive(boolean forActive){
-        isActive = false;
+        isActive = forActive;
         count_enter =0;
     }
 

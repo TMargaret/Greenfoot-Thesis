@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class mainHouseRoom here.
@@ -10,9 +11,11 @@ public class mainHouseRoom extends World
 {
     Robot robot;
     Elder elder;
+    Door door, door2;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
+    private ArrayList <Door> doorList = new ArrayList<Door>();
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -28,8 +31,13 @@ public class mainHouseRoom extends World
         enterRoomText();
         exitRoom();
         boolean doNotMove = false;
-        if ((elder.getTalking()) || flag == 1 || isActive){
-            doNotMove  = true;
+        for(Door door : doorList){
+            if ((elder.getTalking()) || (flag == 1) || (isActive) || (door.getActive())){
+                doNotMove  = true;
+            }
+            if (door.messageHasAppeared() == 1){
+                doNotMove = false;
+            }
         }
         robot.setCanMove(!doNotMove);
     }
@@ -48,13 +56,14 @@ public class mainHouseRoom extends World
         image.fill();
         setBackground(image);
 
-        Door door = new Door();
-        addObject(door,719,233);
-        door.setLocation(713,225);
+        door = new Door();
+        addObject(door,713,225);
 
-        Door door2 = new Door();
-        addObject(door2,333,417);
-        door2.setLocation(321,406);
+        door2 = new Door();
+        addObject(door2,321,406);
+        
+        doorList.add(door);
+        doorList.add(door2);
 
         addWall();
 

@@ -85,6 +85,7 @@ public class Door extends Actor
                             if (Greenfoot.isKeyDown("2")){
                                 getWorld().removeObject(textPanel2);
                                 myElder.setDialogue(false);
+                                myElder.setActive(false);
 
                             }
                         }
@@ -92,6 +93,14 @@ public class Door extends Actor
                 }
             }
         }
+    }
+    
+    public boolean getActive(){
+        return isActive;
+    }
+    
+    public int messageHasAppeared(){
+        return firstMessageFlag;
     }
 
 }
