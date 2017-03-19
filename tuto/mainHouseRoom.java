@@ -25,6 +25,7 @@ public class mainHouseRoom extends World
     {
         super(1000, 600, 1);
         prepare();
+        
     }
 
     public void act(){
@@ -38,10 +39,14 @@ public class mainHouseRoom extends World
             if (door.messageHasAppeared() == 1){
                 doNotMove = false;
             }
+            if (elder.getDoneWithDialogue()){
+                door.setDoneWithElderDialogue(true);
+                
+            }
         }
         robot.setCanMove(!doNotMove);
-    }
 
+    }
     /**
      * An example of a method - replace this comment with your own
      *
@@ -61,7 +66,7 @@ public class mainHouseRoom extends World
 
         door2 = new Door();
         addObject(door2,321,406);
-        
+
         doorList.add(door);
         doorList.add(door2);
 

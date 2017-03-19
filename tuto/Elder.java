@@ -11,17 +11,14 @@ public class Elder extends Actor
 {
     private HiddenSprite hs;
     private int counter = 10, eyes_counter, me = 0;
-    private static boolean isActive = false, doNotMoveWhileTalking = false;
-    private static int count_enter = 0;
-    private static boolean doneDialogue = false;
+    private boolean isActive = false, doNotMoveWhileTalking = false;
+    private int count_enter = 0;
+    private boolean doneDialogue = false;
     private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6, taskTextEnd;
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight41.png");
 
     public Elder(){
-        doneDialogue = false;
-        count_enter = 0;
-        isActive = false;
     }
 
     /**
@@ -50,7 +47,7 @@ public class Elder extends Actor
     }
 
     protected void addHiddenSprite() {   
-        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/8 , 40, 0, 5, true);  
+        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/8 , getImage().getHeight() + getImage().getHeight()/4, 0, 5, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
 
@@ -69,7 +66,7 @@ public class Elder extends Actor
                         if (counter<0 && !isActive){
                             helloText = new TextPanel("welcomeMsg");
                             getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                            isActive = true;
+                            setActive(true);
                             setTalking(true);
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 0 && counter<0){
@@ -122,13 +119,13 @@ public class Elder extends Actor
 
                         }
                         if (Greenfoot.isKeyDown("1") && counter <0){
-                            counter = 20;
+                            counter = 30;
                             getWorld().removeObject(taskTextEnd);
                             setDialogue(true);
                             setTalking(false);
                         }
                         if (Greenfoot.isKeyDown("2") && counter <0){
-                            counter = 20;
+                            counter = 30;
                             getWorld().removeObject(taskTextEnd);
                             setDialogue(false);
                             setActive(false);
@@ -138,8 +135,8 @@ public class Elder extends Actor
                 }
             }
         }
-
     }
+    //if isItTalking is true, then the robot can't move
     public void setTalking(boolean isItTalking){
         doNotMoveWhileTalking = isItTalking;
     }
@@ -148,6 +145,7 @@ public class Elder extends Actor
         return doNotMoveWhileTalking;
     }
 
+    //if the dialogue has ended return true
     public boolean getDoneWithDialogue(){
         return doneDialogue;
     }
