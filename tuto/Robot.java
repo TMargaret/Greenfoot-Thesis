@@ -10,7 +10,7 @@ import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo
 public class Robot extends SmoothMover
 {
     private Level_1 myworld;
-    private boolean canMove = true;
+    private boolean canMove = true, isMoving = false;
 
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever
@@ -18,7 +18,9 @@ public class Robot extends SmoothMover
      */
     public void act() 
     {
+
         move(5);  
+
     } 
 
     public void setCanMove(boolean moveStatus){
@@ -26,16 +28,33 @@ public class Robot extends SmoothMover
     }
 
     public void move(int moveAmt){
+
         // determine direction by keypress checking
         if (!canMove){
             return;
         }
 
         int dx = 0, dy = 0;
-        if (Greenfoot.isKeyDown("right")) dx += 1;
-        if (Greenfoot.isKeyDown("left")) dx -= 1;
-        if (Greenfoot.isKeyDown("down")) dy += 1;
-        if (Greenfoot.isKeyDown("up")) dy -= 1;
+        if (Greenfoot.getKey() == null){
+            isMoving = false;
+        }
+
+        if (Greenfoot.isKeyDown("right")) {
+            dx += 1;
+            isMoving = true;
+        }
+        if (Greenfoot.isKeyDown("left")) {
+            dx -= 1;
+            isMoving = true;
+        }
+        if (Greenfoot.isKeyDown("down")) {
+            dy += 1;
+            isMoving = true;
+        }
+        if (Greenfoot.isKeyDown("up")) {
+            dy -= 1;
+            isMoving = true;
+        }
 
         //check for wall on each step of move in both vertical and horizontal directions
         for (int i = 0; i < moveAmt; i++)
@@ -61,6 +80,7 @@ public class Robot extends SmoothMover
                 setLocation(getX(), getY() - dy);
             }
         }
+        //isMoving = false;
     }
 
     /**
@@ -71,6 +91,10 @@ public class Robot extends SmoothMover
     {
         Actor actor = getOneObjectAtOffset(0, 0, clss);
         return actor != null;        
+    }
+
+    public boolean getIsMoving(){
+        return isMoving;
     }
 
 }

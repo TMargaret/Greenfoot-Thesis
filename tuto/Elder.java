@@ -113,6 +113,7 @@ public class Elder extends Actor
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0){
                             counter = 30;
+                            count_enter = 7;
                             getWorld().removeObject(taskText6);
                             taskTextEnd = new TextPanel("taskTextEnd");
                             getWorld().addObject(taskTextEnd, getWorld().getWidth()/2, getWorld().getHeight()/2);

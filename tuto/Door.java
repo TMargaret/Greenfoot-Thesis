@@ -11,12 +11,13 @@ import java.awt.Color;
 public class Door extends Actor
 {
     int counter = 5, firstMessageFlag = 0;
-    boolean isActive = false, hasInteracted = false, isTheDialogueDone = false, enableTextField = false;;
+    boolean isActive = false, isTheDialogueDone = false, enableTextField = false;;
     private TextPanel textPanel, textPanel2;
     private HiddenSprite hs;
-    private Elder myElder;
     TextField textField;
     String my_text = "";
+    Elder myElder;
+
     /**
      * Act - do whatever the Door wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -47,8 +48,8 @@ public class Door extends Actor
                         continue;        
                     if( a instanceof Robot) {  
                         counter--;
-                        if (counter<0 && !isActive){
-                            counter = 30;
+                        if (!isTheDialogueDone && counter<0 && !isActive){
+                            counter = 50;
                             textPanel = new TextPanel("lockedDoor");
                             getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             isActive = true;
@@ -58,52 +59,53 @@ public class Door extends Actor
                         // getWorld().removeObject(textPanel);
                         // firstMessageFlag = 1;
                         // }
-                        if (isTheDialogueDone && !enableTextField){
-                            counter = 30;
+                        if (isTheDialogueDone && !enableTextField && counter<0){
+                            counter = 50;
+                            setTextField(true);
                             isActive = true;
-                            enableTextField = true;
-                            textField = new TextField(700, 45, Color.white , new Color(192,192,192), "Δημιούργησε ένα αντικείμενο Key και πάτα enter");
-                            // String key_obj = Greenfoot.ask("Δημιούργησε ένα αντικείμενο Key");
-                            // boolean is_equal = key_obj.equals("new Key();");
+                            textField = new TextField(700, 45, "Δημιούργησε ένα αντικείμενο Key και πάτα enter");
                             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+                            //textField.setEnabled(true);
                         }
                         if (Greenfoot.isKeyDown("enter") && counter<0){
+                            counter = 30;
                             my_text = textField.getText();
-                            // textField.setText(" ");
-                            System.out.println(my_text);
-                            System.out.println(my_text.length());
 
                             if (my_text.contains("new Key();"))
-
-                            // if (firstMessageFlag == 1)
                             {
-                                getWorld().removeObject(this);
+                                getWorld().removeObject(textField);
                                 isActive = false;
+                                getWorld().removeObject(this);
                                 break;
                             }
-                            // else {
-                                // textPanel2 = new TextPanel("warningForDoor");
-                                // getWorld().addObject(textPanel2, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                            // }
-                        }
+                            else {
 
-                        //try again
-                        if (Greenfoot.isKeyDown("1")){
-                            counter = 40;
-                            getWorld().removeObject(textPanel2);
-                            hasInteracted = false;
+                                getWorld().removeObject(textField);
+                                textPanel2 = new TextPanel("warningForDoor");
+                                getWorld().addObject(textPanel2, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            }
                         }
-                        //talk with elder
-                        if (Greenfoot.isKeyDown("2")){
-                            getWorld().removeObject(textPanel2);
-                            isTheDialogueDone = false;
-                            myElder.setActive(false);
-
-                        }
+                    }
+                    //try again
+                    if (Greenfoot.isKeyDown("1")){
+                        counter = 30;
+                        getWorld().removeObject(textPanel2);
+                        setTextField(false);
+                    }
+                    //talk with elder
+                    if (Greenfoot.isKeyDown("2")){
+                        counter = 30;
+                        getWorld().removeObject(textPanel2);
+                        ((mainHouseRoom) getWorld()).setElderActive(false);
+                        isActive = false;
                     }
                 }
             }
         }
+    }
+
+    public void setTextField(boolean activeTextField){
+        enableTextField = activeTextField;
     }
 
     public boolean getTextField(){
@@ -113,6 +115,11 @@ public class Door extends Actor
     public boolean getActive(){
         return isActive;
     }
+    
+    public void setActive(boolean active){
+        isActive = active;
+        counter = 30;
+    }
 
     public int messageHasAppeared(){
         return firstMessageFlag;
@@ -120,6 +127,7 @@ public class Door extends Actor
 
     public void setDoneWithElderDialogue(boolean getDoneWithElderDialogue){
         isTheDialogueDone = getDoneWithElderDialogue;
+        counter = 30;
     }
 
 }
