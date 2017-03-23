@@ -11,7 +11,7 @@ public class Elder extends Actor
 {
     private HiddenSprite hs;
     private int counter = 10, eyes_counter, me = 0;
-    private boolean isActive = false, doNotMoveWhileTalking = false;
+    private boolean isActive = false, doNotMoveWhileTalking = false, isEDown = false;
     private int count_enter = 0;
     private boolean doneDialogue = false;
     private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6, taskTextEnd;
@@ -63,73 +63,65 @@ public class Elder extends Actor
                         continue;        
                     if( a instanceof Robot) {  
                         counter--;
-                        if (counter<0 && !isActive){
+                        if (Greenfoot.isKeyDown("e")){
+                            isEDown = true;
+                        }
+                        if (counter<0 && !isActive && isEDown){
                             helloText = new TextPanel("welcomeMsg");
                             getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             setActive(true);
                             setTalking(true);
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 0 && counter<0){
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 0 && counter<0 && isEDown){
                             counter = 20;
                             getWorld().removeObject(helloText);
                             taskText1 = new TextPanel("taskText1");
                             getWorld().addObject(taskText1, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 1;
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter <0){
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter <0 && isEDown){
                             counter = 30;
                             getWorld().removeObject(taskText1);
                             taskText2 = new TextPanel("taskText2");
                             getWorld().addObject(taskText2, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 2;
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0){
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0 && isEDown){
                             counter = 30;
                             getWorld().removeObject(taskText2);
                             taskText3 = new TextPanel("taskText3");
                             getWorld().addObject(taskText3, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 3;
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0){
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0 && isEDown){
                             counter = 30;
                             getWorld().removeObject(taskText3);
                             taskText4 = new TextPanel("taskText4");
                             getWorld().addObject(taskText4, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 4;
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 4 && counter <0){
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 4 && counter <0 && isEDown){
                             counter = 30;
                             getWorld().removeObject(taskText4);
                             taskText5 = new TextPanel("taskText5");
                             getWorld().addObject(taskText5, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 5;
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0){
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0 && isEDown){
                             counter = 30;
                             getWorld().removeObject(taskText5);
                             taskText6 = new TextPanel("taskText6");
                             getWorld().addObject(taskText6, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 6;
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0){
+                        if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0 && isEDown){
                             counter = 30;
-                            count_enter = 7;
                             getWorld().removeObject(taskText6);
-                            taskTextEnd = new TextPanel("taskTextEnd");
-                            getWorld().addObject(taskTextEnd, getWorld().getWidth()/2, getWorld().getHeight()/2);
-
-                        }
-                        if (Greenfoot.isKeyDown("1") && counter <0){
-                            counter = 30;
-                            getWorld().removeObject(taskTextEnd);
-                            setDialogue(true);
-                            setTalking(false);
-                        }
-                        if (Greenfoot.isKeyDown("2") && counter <0){
-                            counter = 30;
-                            getWorld().removeObject(taskTextEnd);
-                            setDialogue(false);
+                            count_enter = 0;
+                            isEDown = false;
                             setActive(false);
+                            setTalking(false);
+
                         }
                     }
 
@@ -154,7 +146,7 @@ public class Elder extends Actor
     public void setDialogue(boolean dialogue){
         doneDialogue = dialogue;
     }
-    
+
     public void setActive(boolean forActive){
         isActive = forActive;
         count_enter =0;
