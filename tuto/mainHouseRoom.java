@@ -12,10 +12,13 @@ public class mainHouseRoom extends World
     Robot robot;
     Elder elder;
     Door door, door2;
+    Lumber lumber;
+    Clay clay;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
     private ArrayList <Door> doorList = new ArrayList<Door>();
+    private ArrayList <Lumber> lumberList = new ArrayList<Lumber>();
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -32,10 +35,17 @@ public class mainHouseRoom extends World
         enterRoomText();
         exitRoom();
         boolean doNotMove = false;
+        if (elder.getTalking() || (flag == 1) || (isActive)){
+            doNotMove  = true;
+        }
         for(Door door : doorList){
-            if (elder.getTalking() || (flag == 1) || (isActive) || (door.getActive())){
+            if (door.getActive()){
                 doNotMove  = true;
-
+            }
+        }
+        for(Lumber lumber : lumberList){
+            if (lumber.getActive()){
+                doNotMove  = true;
             }
         }
         robot.setCanMove(!doNotMove);
@@ -58,11 +68,11 @@ public class mainHouseRoom extends World
         door = new Door();
         addObject(door,713,225);
 
-        door2 = new Door();
-        addObject(door2,321,406);
+        // door2 = new Door();
+        // addObject(door2,321,406);
 
         doorList.add(door);
-        doorList.add(door2);
+        //doorList.add(door2);
 
         addWall();
 
@@ -72,15 +82,18 @@ public class mainHouseRoom extends World
         elder = new Elder();
         addObject(elder,900,500);
 
-        Clay clay = new Clay();
+        clay = new Clay();
         addObject(clay,910,85);
         Clay clay2 = new Clay();
         addObject(clay2,867,88);
 
-        Lumber lumber = new Lumber();
+        lumber = new Lumber();
         addObject(lumber,135,520);
         Lumber lumber2 = new Lumber();
-        addObject(lumber2,100,528);    
+        addObject(lumber2,100,528);  
+        
+        lumberList.add(lumber);
+        lumberList.add(lumber2);
     }
 
     public void addWall(){

@@ -17,7 +17,12 @@ public class Clay extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+
+    } 
+
+    protected void addedToWorld(World w)
+    {
+        addHiddenSprite();
     }    
 
     protected void addHiddenSprite() {   

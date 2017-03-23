@@ -65,7 +65,6 @@ public class Door extends Actor
                             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
                         }
                         if (Greenfoot.isKeyDown("enter") && counter<0 && enableTextField && isEDown){
-
                             counter = 30;
                             my_text = textField.getText();
 
