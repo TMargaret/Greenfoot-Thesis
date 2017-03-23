@@ -37,7 +37,7 @@ public class Lumber extends Actor
     }
 
     protected void addHiddenSprite() {   
-        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 120, 10, 5, true);  
+        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , 40, 10, 5, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
 

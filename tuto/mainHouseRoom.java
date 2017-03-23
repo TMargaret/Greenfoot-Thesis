@@ -12,13 +12,14 @@ public class mainHouseRoom extends World
     Robot robot;
     Elder elder;
     Door door, door2;
-    Lumber lumber;
-    Clay clay;
+    Lumber lumber, lumber2;
+    Clay clay, clay2;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
     private ArrayList <Door> doorList = new ArrayList<Door>();
     private ArrayList <Lumber> lumberList = new ArrayList<Lumber>();
+    private ArrayList<Clay> clayList = new ArrayList<Clay>();
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -48,6 +49,11 @@ public class mainHouseRoom extends World
                 doNotMove  = true;
             }
         }
+        for(Clay clay : clayList){
+            if (clay.getActive()){
+                doNotMove  = true;
+            }
+        }
         robot.setCanMove(!doNotMove);
     }
 
@@ -68,11 +74,11 @@ public class mainHouseRoom extends World
         door = new Door();
         addObject(door,713,225);
 
-        // door2 = new Door();
-        // addObject(door2,321,406);
+        door2 = new Door();
+        addObject(door2,321,406);
 
         doorList.add(door);
-        //doorList.add(door2);
+        doorList.add(door2);
 
         addWall();
 
@@ -84,12 +90,15 @@ public class mainHouseRoom extends World
 
         clay = new Clay();
         addObject(clay,910,85);
-        Clay clay2 = new Clay();
-        addObject(clay2,867,88);
+        clay2 = new Clay();
+        addObject(clay2,910,230);
+        
+        clayList.add(clay);
+        clayList.add(clay2);
 
         lumber = new Lumber();
-        addObject(lumber,135,520);
-        Lumber lumber2 = new Lumber();
+        addObject(lumber,100,400);
+        lumber2 = new Lumber();
         addObject(lumber2,100,528);  
         
         lumberList.add(lumber);
