@@ -15,6 +15,4 @@ comment5.params=
 comment5.target=void\ enterRoomText()
 comment6.params=
 comment6.target=void\ exitRoom()
-comment7.params=activeElderDialogue
-comment7.target=void\ setElderActive(boolean)
-numComments=8
+numComments=7

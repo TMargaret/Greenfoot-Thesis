@@ -13,7 +13,7 @@ public class mainHouseRoom extends World
     Elder elder;
     Door door, door2;
     int counter = 100, counter2 = 25, flag = 0;
-    boolean isActive = false, elderDialogue = false, robotMoving = false;
+    boolean isActive = false;
     private TextPanel textPanel, entranceText;
     private ArrayList <Door> doorList = new ArrayList<Door>();
 
@@ -25,7 +25,7 @@ public class mainHouseRoom extends World
     {
         super(1000, 600, 1);
         prepare();
-        
+
     }
 
     public void act(){
@@ -35,32 +35,12 @@ public class mainHouseRoom extends World
         for(Door door : doorList){
             if (elder.getTalking() || (flag == 1) || (isActive) || (door.getActive())){
                 doNotMove  = true;
-                
+
             }
-            robotMoving = robot.getIsMoving();
-            System.out.println(robotMoving);
-            if (robotMoving){
-                door.setDoneWithElderDialogue(false);
-                door.setTextField(false);
-                //door.setActive(false);
-                elder.setActive(false);
-                //elder.setDialogue(false);
-            }
-            if (door.messageHasAppeared() == 1){
-                doNotMove = false;
-            }
-            if (elder.getDoneWithDialogue()){
-                System.out.println("yes");
-                door.setDoneWithElderDialogue(true);   
-            }
-            // if (!(elder.getTalking()) && !(elder.getDoneWithDialogue()) ){
-                // elder.setActive(false);
-                // elder.setDialogue(false);
-            // }
         }
         robot.setCanMove(!doNotMove);
-
     }
+
     /**
      * An example of a method - replace this comment with your own
      *
@@ -176,7 +156,7 @@ public class mainHouseRoom extends World
 
     public void enterRoomText(){
         counter2--;
-        if (counter2<0 && flag == 0){
+        if (counter2 < 0 && flag == 0){
             entranceText = new TextPanel("RoomEntranceText");
             addObject(entranceText, getWidth()/2, getHeight()/2);
             flag = 1;
@@ -201,10 +181,5 @@ public class mainHouseRoom extends World
             removeObject(textPanel);
             Greenfoot.setWorld(new Level_1());
         }      
-    }
-    
-    public void setElderActive(boolean activeElderDialogue){
-        System.out.println("ok");
-        elder.setDialogue(activeElderDialogue);
     }
 }

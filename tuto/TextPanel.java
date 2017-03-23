@@ -82,15 +82,11 @@ public class TextPanel extends Actor
             String mytext = text.taskText6();
             makeImage(mytext, "elder");
         }
-        if (status == "taskTextEnd") {
-            String mytext = text.taskTextEnd();
-            makeImage(mytext, "elder");
-        }
         if (status == "lockedDoor") {
             String mytext = text.lockedDoor();
             makeImage(mytext);
         }
-        if (status == "warningForDoor"){
+        if (status == "wrongKey"){
             String mytext = text.warningDoor();
             makeImage(mytext, "elder");
         }
@@ -137,7 +133,7 @@ public class TextPanel extends Actor
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
        if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);
        if (status == "taskText3" || status == "taskText4" || status == "taskText5") image.drawString("Πάτα ENTER", 30, 290);
-       if (status == "taskText6") image.drawString("Πάτα ENTER", 30, 290);
+       if (status == "taskText6" || status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
         setImage(image);
     }
   
