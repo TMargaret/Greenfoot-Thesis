@@ -64,6 +64,9 @@ public class Door extends Actor
                             textField = new TextField(700, 45, "Δημιούργησε ένα αντικείμενο Key και πάτα enter");
                             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
                         }
+                        if (Greenfoot.mouseClicked(textField) || Greenfoot.isKeyDown("backspace")){
+                            textField.setText("");
+                        }
                         if (Greenfoot.isKeyDown("enter") && counter<0 && enableTextField && isEDown){
                             counter = 30;
                             my_text = textField.getText();
