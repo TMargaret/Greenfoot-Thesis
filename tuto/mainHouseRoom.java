@@ -20,6 +20,8 @@ public class mainHouseRoom extends World
     private ArrayList <Door> doorList = new ArrayList<Door>();
     private ArrayList <Lumber> lumberList = new ArrayList<Lumber>();
     private ArrayList<Clay> clayList = new ArrayList<Clay>();
+    HealthBar healthBar;
+    HealthLogo healthLogo;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -92,7 +94,7 @@ public class mainHouseRoom extends World
         addObject(clay,910,85);
         clay2 = new Clay();
         addObject(clay2,910,230);
-        
+
         clayList.add(clay);
         clayList.add(clay2);
 
@@ -100,9 +102,15 @@ public class mainHouseRoom extends World
         addObject(lumber,100,400);
         lumber2 = new Lumber();
         addObject(lumber2,100,528);  
-        
+
         lumberList.add(lumber);
         lumberList.add(lumber2);
+
+        healthBar = new HealthBar();
+        addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
+        
+        healthLogo = new HealthLogo();
+        addObject(healthLogo,20,20);
     }
 
     public void addWall(){

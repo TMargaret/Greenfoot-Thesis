@@ -15,6 +15,8 @@ public class Level_1 extends World
     private Robot robot;
     private mainHouse my_mainHouse;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
+    HealthBar healthBar;
+    HealthLogo healthLogo;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -52,6 +54,12 @@ public class Level_1 extends World
 
         robot = new Robot();
         addObject(robot,79,525);
+
+        healthBar = new HealthBar();
+        addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
+
+        healthLogo = new HealthLogo();
+        addObject(healthLogo,20,20);
     }
 
     /**
