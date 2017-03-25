@@ -12,6 +12,7 @@ public class Door extends Actor
 {
     int counter = 5, firstMessageFlag = 0;
     boolean isActive = false, enableTextField = false, isEDown = false, tryAgainOrLeave = false;
+    boolean wrongCommand = false;
     private TextPanel textPanel, textPanel2;
     private HiddenSprite hs;
     TextField textField;
@@ -75,15 +76,15 @@ public class Door extends Actor
                             {
                                 getWorld().removeObject(textField);
                                 isActive = false;
-                                getWorld().removeObject(this);
+                                getWorld().removeObject(this);                     
                                 break;
                             }
                             else {
-                                getWorld().removeObject(textField);
+                                checkHealthBar();
                                 textPanel2 = new TextPanel("wrongKey");
                                 getWorld().addObject(textPanel2, getWorld().getWidth()/2, getWorld().getHeight()/2);
                                 tryAgainOrLeave = true;
-                                isEDown = false;
+                                isEDown = false;                             
                             }
                         }
                         if (Greenfoot.isKeyDown("enter") && counter < 0 && tryAgainOrLeave){
@@ -96,8 +97,19 @@ public class Door extends Actor
 
                         }
                     }
+                    wrongCommand = false;
                 }
             }
+        }
+    }
+
+    public void checkHealthBar(){
+        mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
+        HealthBar healthBar = mainHouseRoom.getHealthBar();
+        getWorld().removeObject(textField);
+        if (!wrongCommand){
+            wrongCommand = true;
+            healthBar.looseHealth();
         }
     }
 
@@ -117,6 +129,5 @@ public class Door extends Actor
         isActive = active;
         counter = 30;
     }
-
 
 }

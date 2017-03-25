@@ -11,6 +11,7 @@ public class Clay extends Actor
 {
     private HiddenSprite hs;
     boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
+    boolean wrongCommand = false;
     TextField textField;
     int counter = 30;
     String my_text = "";
@@ -76,6 +77,7 @@ public class Clay extends Actor
                                 break;
                             }
                             else {
+                                checkHealthBar();
                                 getWorld().removeObject(textField);
                                 textPanel= new TextPanel("wrongKey");
                                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
@@ -91,8 +93,19 @@ public class Clay extends Actor
                             getWorld().removeObject(textPanel);
                         }
                     }
+                    wrongCommand = false;
                 }
             }
+        }
+    }
+    
+    public void checkHealthBar(){
+        mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
+        HealthBar healthBar = mainHouseRoom.getHealthBar();
+        getWorld().removeObject(textField);
+        if (!wrongCommand){
+            wrongCommand = true;
+            healthBar.looseHealth();
         }
     }
 

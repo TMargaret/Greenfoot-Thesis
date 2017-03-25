@@ -212,4 +212,8 @@ public class mainHouseRoom extends World
             Greenfoot.setWorld(new Level_1());
         }      
     }
+    
+    public HealthBar getHealthBar(){
+        return healthBar;
+    }
 }
