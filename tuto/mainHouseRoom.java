@@ -35,6 +35,7 @@ public class mainHouseRoom extends World
     }
 
     public void act(){
+        gameOver();
         enterRoomText();
         exitRoom();
         boolean doNotMove = false;
@@ -108,7 +109,7 @@ public class mainHouseRoom extends World
 
         healthBar = new HealthBar();
         addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
-        
+
         healthLogo = new HealthLogo();
         addObject(healthLogo,20,20);
     }
@@ -212,8 +213,14 @@ public class mainHouseRoom extends World
             Greenfoot.setWorld(new Level_1());
         }      
     }
-    
+
     public HealthBar getHealthBar(){
         return healthBar;
     }
+
+    public void gameOver(){
+        if (healthBar.getHealth() <= 0)
+            Greenfoot.stop();
+    }
+
 }

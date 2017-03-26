@@ -85,7 +85,7 @@ public class Door extends Actor
                                 getWorld().addObject(textPanel2, getWorld().getWidth()/2, getWorld().getHeight()/2);
                                 tryAgainOrLeave = true;
                                 isEDown = false;                             
-                            }
+                           }
                         }
                         if (Greenfoot.isKeyDown("enter") && counter < 0 && tryAgainOrLeave){
                             counter = 40;
@@ -111,6 +111,7 @@ public class Door extends Actor
             wrongCommand = true;
             healthBar.looseHealth();
         }
+        
     }
 
     public void setTextField(boolean activeTextField){
